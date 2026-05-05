@@ -8,7 +8,7 @@ Z1 !s100 9hkB1UeEhMVSC]L`dShdV2
 Z2 IjdZ8^kWX^FWB?nO;BBJRO0
 Z3 VefRGmW1Y:olX0BHlX@GLb0
 Z4 dD:\HDL\Doan_xulianh\DoAn
-Z5 w1777948443
+Z5 w1777974495
 Z6 8D:/HDL/Doan_xulianh/DoAn/cdf_lut.v
 Z7 FD:/HDL/Doan_xulianh/DoAn/cdf_lut.v
 L0 1
@@ -17,150 +17,150 @@ r1
 31
 Z9 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/cdf_lut.v|
 Z10 o-work work -O0
-Z11 !s108 1777949479.851000
+Z11 !s108 1777974643.936000
 Z12 !s107 D:/HDL/Doan_xulianh/DoAn/cdf_lut.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vequalize
-Z13 I;WCLIin<:gWYRezInROm>2
-Z14 VlNYI0DBQLdXAUQJN^MMV<1
+Z13 !s100 ekLSMIXe^_XnEMFJlkh8;0
+Z14 I;WCLIin<:gWYRezInROm>2
+Z15 VlNYI0DBQLdXAUQJN^MMV<1
 R4
-Z15 w1777948912
+R5
 Z16 8D:/HDL/Doan_xulianh/DoAn/equalize.v
 Z17 FD:/HDL/Doan_xulianh/DoAn/equalize.v
 L0 1
 R8
 r1
 31
+Z18 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/equalize.v|
 R10
 !i10b 1
-Z18 !s100 ekLSMIXe^_XnEMFJlkh8;0
 !s85 0
-Z19 !s108 1777949479.948000
+Z19 !s108 1777974644.063000
 Z20 !s107 D:/HDL/Doan_xulianh/DoAn/equalize.v|
-Z21 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/equalize.v|
 !s101 -O0
 vhistogram
-Z22 !s100 EXfag5GnZXNbIl4GWTkmY1
-Z23 I6oLQc<>WLi@no<HdRj5=l3
-Z24 V>ic0Zb04VWKk=0LP8]cHA2
+Z21 Ic>oVQDe1TU0RZQJmTa?k^1
+Z22 V>ic0Zb04VWKk=0LP8]cHA2
 R4
-Z25 w1777868829
-Z26 8D:/HDL/Doan_xulianh/DoAn/histogram.v
-Z27 FD:/HDL/Doan_xulianh/DoAn/histogram.v
+Z23 w1777974609
+Z24 8D:/HDL/Doan_xulianh/DoAn/histogram.v
+Z25 FD:/HDL/Doan_xulianh/DoAn/histogram.v
 L0 1
 R8
 r1
 31
-Z28 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/histogram.v|
+Z26 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/histogram.v|
 R10
-Z29 !s108 1777949479.754000
-Z30 !s107 D:/HDL/Doan_xulianh/DoAn/histogram.v|
+Z27 !s100 QA50@m?[`2oh^@_b^JDSQ0
+Z28 !s108 1777974643.841000
+Z29 !s107 D:/HDL/Doan_xulianh/DoAn/histogram.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vmedian
-Z31 !s100 ^S7lCLf4BAm0Z[DQY3IHH1
-Z32 IAgeRQhN47]GdXOfe]<WO?2
-Z33 VgDA1e<51E;FQ7bVoNUSRH3
+Z30 !s100 ^S7lCLf4BAm0Z[DQY3IHH1
+Z31 IAgeRQhN47]GdXOfe]<WO?2
+Z32 VgDA1e<51E;FQ7bVoNUSRH3
 R4
-Z34 w1776393605
-Z35 8D:/HDL/Doan_xulianh/DoAn/median.v
-Z36 FD:/HDL/Doan_xulianh/DoAn/median.v
+R5
+Z33 8D:/HDL/Doan_xulianh/DoAn/median.v
+Z34 FD:/HDL/Doan_xulianh/DoAn/median.v
 L0 1
 R8
 r1
 31
-Z37 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/median.v|
+Z35 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/median.v|
 R10
-Z38 !s108 1777949479.372000
-Z39 !s107 D:/HDL/Doan_xulianh/DoAn/median.v|
+Z36 !s108 1777974643.507000
+Z37 !s107 D:/HDL/Doan_xulianh/DoAn/median.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vmedian_processor
-Z40 !s100 5>MNBW7YNXZ`?JiLKz67>3
-Z41 Ig5a<D;Z<NE<fhz618eGn@2
-Z42 V6<A9ALK1DjRI6jecE4I]Y3
+Z38 !s100 5>MNBW7YNXZ`?JiLKz67>3
+Z39 Ig5a<D;Z<NE<fhz618eGn@2
+Z40 V6<A9ALK1DjRI6jecE4I]Y3
 R4
-Z43 w1777863724
-Z44 8D:/HDL/Doan_xulianh/DoAn/median_processor.v
-Z45 FD:/HDL/Doan_xulianh/DoAn/median_processor.v
+R5
+Z41 8D:/HDL/Doan_xulianh/DoAn/median_processor.v
+Z42 FD:/HDL/Doan_xulianh/DoAn/median_processor.v
 L0 1
 R8
 r1
 31
-Z46 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/median_processor.v|
+Z43 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/median_processor.v|
 R10
-Z47 !s108 1777949479.468000
-Z48 !s107 D:/HDL/Doan_xulianh/DoAn/median_processor.v|
+Z44 !s108 1777974643.586000
+Z45 !s107 D:/HDL/Doan_xulianh/DoAn/median_processor.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vswap
-Z49 !s100 ZeliVGUO>^WkiB_Gei6OW0
-Z50 IaFoE?_d2D?f=@FzObXFl>2
-Z51 VCh`m5f=eY6D`BGA@nL[mg0
+Z46 !s100 ZeliVGUO>^WkiB_Gei6OW0
+Z47 IaFoE?_d2D?f=@FzObXFl>2
+Z48 VCh`m5f=eY6D`BGA@nL[mg0
 R4
-Z52 w1776393520
-Z53 8D:/HDL/Doan_xulianh/DoAn/swap.v
-Z54 FD:/HDL/Doan_xulianh/DoAn/swap.v
+R5
+Z49 8D:/HDL/Doan_xulianh/DoAn/swap.v
+Z50 FD:/HDL/Doan_xulianh/DoAn/swap.v
 L0 1
 R8
 r1
 31
-Z55 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/swap.v|
+Z51 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/swap.v|
 R10
-Z56 !s108 1777949479.532000
-Z57 !s107 D:/HDL/Doan_xulianh/DoAn/swap.v|
+Z52 !s108 1777974643.682000
+Z53 !s107 D:/HDL/Doan_xulianh/DoAn/swap.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_cdf_lut
-Z58 !s100 ^UVNJYo?^@=CC`l<Hm:b;1
-Z59 Idgg`JAE<Cd55mEVLH`QH82
-Z60 Vfjo9PNWCdYViUT@QlJM2Y3
+Z54 !s100 ^UVNJYo?^@=CC`l<Hm:b;1
+Z55 Idgg`JAE<Cd55mEVLH`QH82
+Z56 Vfjo9PNWCdYViUT@QlJM2Y3
 R4
-Z61 w1777948468
-Z62 8D:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v
-Z63 FD:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v
+R5
+Z57 8D:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v
+Z58 FD:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v
 L0 3
 R8
 r1
 31
-Z64 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v|
+Z59 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v|
 R10
-Z65 !s108 1777949479.915000
-Z66 !s107 D:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v|
+Z60 !s108 1777974644.016000
+Z61 !s107 D:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_equalize
 !i10b 1
-!s100 ]O1OXVG7km64Y0?`Ca2@W1
-IczDE7ZebMfFaBRWQ]Ec1J2
-V8_PM9MQGU7eVZIeeK[eI81
+Z62 !s100 ]O1OXVG7km64Y0?`Ca2@W1
+Z63 IczDE7ZebMfFaBRWQ]Ec1J2
+Z64 V8_PM9MQGU7eVZIeeK[eI81
 R4
-w1777949403
-8D:/HDL/Doan_xulianh/DoAn/tb_equalize.v
-FD:/HDL/Doan_xulianh/DoAn/tb_equalize.v
+R5
+Z65 8D:/HDL/Doan_xulianh/DoAn/tb_equalize.v
+Z66 FD:/HDL/Doan_xulianh/DoAn/tb_equalize.v
 L0 3
 R8
 r1
 !s85 0
 31
-!s108 1777949480.027000
+!s108 1777974644.143000
 !s107 D:/HDL/Doan_xulianh/DoAn/tb_equalize.v|
-!s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/tb_equalize.v|
+Z67 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/tb_equalize.v|
 !s101 -O0
 R10
 vtb_histogram
-Z67 !s100 khjAFA6b2F_7jGeG8ahh=0
-Z68 IcRWkhZfi9BgZCb37f0;Cb2
-Z69 V2FbSfFmNdR4jOR?W8KbdH2
+Z68 !s100 khjAFA6b2F_7jGeG8ahh=0
+Z69 IcRWkhZfi9BgZCb37f0;Cb2
+Z70 V2FbSfFmNdR4jOR?W8KbdH2
 R4
-Z70 w1777948530
+R5
 Z71 8D:/HDL/Doan_xulianh/DoAn/tb_histogram.v
 Z72 FD:/HDL/Doan_xulianh/DoAn/tb_histogram.v
 L0 3
@@ -169,7 +169,7 @@ r1
 31
 Z73 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/tb_histogram.v|
 R10
-Z74 !s108 1777949479.803000
+Z74 !s108 1777974643.904000
 Z75 !s107 D:/HDL/Doan_xulianh/DoAn/tb_histogram.v|
 !i10b 1
 !s85 0
@@ -179,17 +179,17 @@ Z76 !s100 G2BV]BZ=MhFTlN`R@c5Vg3
 Z77 I@8SbX08B7Y;X=mAdY9JR;0
 Z78 VF?YQAmAHgzh?31Ue^gOfA3
 R4
-Z79 w1776411753
-Z80 8D:/HDL/Doan_xulianh/DoAn/tb_median.v
-Z81 FD:/HDL/Doan_xulianh/DoAn/tb_median.v
+R5
+Z79 8D:/HDL/Doan_xulianh/DoAn/tb_median.v
+Z80 FD:/HDL/Doan_xulianh/DoAn/tb_median.v
 L0 2
 R8
 r1
 31
-Z82 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/tb_median.v|
+Z81 !s90 -reportprogress|300|-work|work|D:/HDL/Doan_xulianh/DoAn/tb_median.v|
 R10
-Z83 !s108 1777949479.691000
-Z84 !s107 D:/HDL/Doan_xulianh/DoAn/tb_median.v|
+Z82 !s108 1777974643.761000
+Z83 !s107 D:/HDL/Doan_xulianh/DoAn/tb_median.v|
 !i10b 1
 !s85 0
 !s101 -O0

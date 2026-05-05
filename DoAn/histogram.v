@@ -2,7 +2,6 @@ module histogram (
     input clk,
     input rst,
     input start,
-	 output reg [31:0] hist_out [0:255],
     output reg done
 );
 
@@ -21,7 +20,7 @@ reg write_done;
 
 initial begin
     $readmemh(IMAGE_NAME, image_memory);
-    //file_out = $fopen("Anhoutput.txt", "w");
+    file_out = $fopen("Anhoutput.txt", "w");
 end
 
 always @(posedge clk or negedge rst) begin
@@ -50,7 +49,7 @@ always @(posedge clk or negedge rst) begin
 end
 
 //ghi file
-/* 
+ 
 always @(posedge clk) begin
     if (done && !write_done) begin
         for (i = 0; i < 256; i = i + 1)
@@ -60,7 +59,7 @@ always @(posedge clk) begin
         write_done <= 1;
     end
 end
-*/
+/*
 always @(posedge clk) 
 begin
 	if (done && !write_done)
@@ -69,4 +68,5 @@ begin
 		hist_out[i] <= hist[i];
 	end
 end
+*/
 endmodule
