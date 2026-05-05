@@ -1,0 +1,74 @@
+module median_processor(
+input clk,
+input rst_n,
+input start,
+output reg done
+);
+parameter WIDTH = 430;
+parameter HEIGHT = 554;
+parameter TOTAL_PIXELS = WIDTH * HEIGHT;
+parameter IMAGE_NAME = "Anhinput.txt";
+reg [7:0] image_memory [0: TOTAL_PIXELS-1];
+reg [7:0] p0, p1, p2, p3, p4, p5, p6, p7, p8;
+wire [7:0] out_median;
+reg valid_out;
+integer x, y, file_out;
+
+initial begin
+	$readmemh(IMAGE_NAME, image_memory);
+	file_out = $fopen("Anhoutput.txt", "w");
+end
+	
+// Dua du lieu vao mach median
+median uut (
+	.p0(p0), .p1(p1), .p2(p2),
+	.p3(p3), .p4(p4), .p5(p5),
+	.p6(p6), .p7(p7), .p8(p8),
+	.out_median(out_median)
+);
+always @(posedge clk or negedge rst_n) 
+begin
+	if (!rst_n) 
+	begin
+		x <= 0; y <= 0;
+		done <= 0;
+		valid_out <= 0;
+		{p0,p1,p2,p3,p4,p5,p6,p7,p8} <= 0;
+	end 
+	else if (start && !done) 
+	begin
+		valid_out <= 1;
+		// Logic Zero Padding
+		p0 <= ((y>0) && (x>0)) ? image_memory[(y-1)*WIDTH + (x-1)] : 8'd0;
+		p1 <= (y>0) ? image_memory[(y-1)*WIDTH + x] : 8'd0;
+		p2 <= ((y>0) && (x<WIDTH-1)) ? image_memory[(y-1)*WIDTH + (x+1)] : 8'd0;
+		p3 <= (x > 0) ? image_memory[y*WIDTH + (x	-1)] : 8'd0;
+		p4 <= image_memory[y*WIDTH + x];
+		p5 <= (x<WIDTH-1) ? image_memory[y*WIDTH + (x+1)] : 8'd0;
+
+		p6 <= ((y<HEIGHT-1) && (x>0)) ? image_memory[(y+1)*WIDTH + (x-1)] : 8'd0;
+		p7 <= (y<HEIGHT-1) ? image_memory[(y+1)*WIDTH + x] : 8'd0;
+		p8 <= ((y<HEIGHT-1) && (x<WIDTH-1)) ? image_memory[(y+1)*WIDTH + (x+1)] : 8'd0;
+		// Cơ chế ghi file: Delay 1 nhịp để chờ dữ liệu p ổn định 
+		if (valid_out) $fwrite(file_out, "%h\n", out_median);
+		// Quét đủ 430	554
+		if (x < WIDTH - 1) 
+		begin
+			x <= x + 1;
+		end else 
+		begin
+			x <= 0;
+			if (y < HEIGHT - 1) y <= y + 1;
+			else
+			done <= 1;
+		end
+	end else if (done) 
+	begin
+		valid_out <=0;
+		$fwrite(file_out, "%h\n", out_median);
+		valid_out <= 0;
+		$fclose(file_out);
+		//display("--- DONE: Da ghi du so pi	els ---");
+	end
+end
+endmodule

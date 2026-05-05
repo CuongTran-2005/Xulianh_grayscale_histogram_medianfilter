@@ -1,0 +1,70 @@
+`timescale 1ns/1ps
+
+module tb_cdf_lut;
+
+reg clk;
+reg rst;
+reg start;
+
+wire done;
+
+// Instantiate DUT
+cdf_lut uut (
+    .clk(clk),
+    .rst(rst),
+    .start(start),
+    .done(done)
+);
+
+
+// Clock 10ns (100MHz)
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk;
+end
+
+
+// Stimulus
+initial begin
+    // Init
+    rst = 0;
+    start = 0;
+
+    // Reset
+    #20;
+    rst = 1;
+
+    // Start
+    #20;
+    start = 1;
+
+
+    // Chờ xử lý xong
+    wait(done);
+
+    $display("CDF + LUT DONE at time = %t", $time);
+
+    // Chờ ghi file hoàn tất
+    #50;
+
+    $display("Check file lut_output.txt");
+
+    $stop;
+end
+
+
+// Timeout tránh treo
+initial begin
+    #1000000;
+    $display("Simulation TIMEOUT!");
+    $stop;
+end
+
+
+// Debug (optional)
+always @(posedge clk) begin
+    if (done)
+        $display("Done signal asserted at %t", $time);
+end
+
+endmodule

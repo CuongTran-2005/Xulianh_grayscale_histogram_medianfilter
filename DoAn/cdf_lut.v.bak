@@ -1,0 +1,33 @@
+module cdf_lut (
+    input clk,
+    input rst,
+    input start,
+
+    input [31:0] hist [0:255],
+
+    output reg [7:0] lut [0:255],
+    output reg done
+);
+
+integer i;
+reg [31:0] cdf;
+reg [31:0] total_pixels;
+
+always @(posedge clk) begin
+    if (rst) begin
+        cdf <= 0;
+        done <= 0;
+    end
+    else if (start) begin
+        cdf = 0;
+
+        for (i = 0; i < 256; i = i + 1) begin
+            cdf = cdf + hist[i];
+            lut[i] = (cdf * 255) / total_pixels;
+        end
+
+        done <= 1;
+    end
+end
+
+endmodule

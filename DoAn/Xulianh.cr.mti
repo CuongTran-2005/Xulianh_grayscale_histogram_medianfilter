@@ -1,0 +1,74 @@
+D:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/tb_cdf_lut.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module tb_cdf_lut
+
+Top level modules:
+	tb_cdf_lut
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/median.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/median.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module median
+
+Top level modules:
+	median
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/histogram.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/histogram.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module histogram
+
+Top level modules:
+	histogram
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/tb_histogram.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/tb_histogram.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module tb_histogram
+
+Top level modules:
+	tb_histogram
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/swap.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/swap.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module swap
+
+Top level modules:
+	swap
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/tb_median.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/tb_median.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module tb_median
+
+Top level modules:
+	tb_median
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/equalize.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/equalize.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module equalize
+
+Top level modules:
+	equalize
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/tb_equalize.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/tb_equalize.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module tb_equalize
+
+Top level modules:
+	tb_equalize
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/cdf_lut.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/cdf_lut.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module cdf_lut
+
+Top level modules:
+	cdf_lut
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/median_processor.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/median_processor.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module median_processor
+
+Top level modules:
+	median_processor
+
+} {} {}} D:/HDL/Doan_xulianh/DoAn/Xulianh.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/Xulianh.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+
+} {} {}}

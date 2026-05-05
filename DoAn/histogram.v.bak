@@ -1,0 +1,29 @@
+module histogram (
+    input clk,
+    input rst,
+    input valid_in,
+    input [7:0] pixel_in,
+
+    output reg done,
+
+    // RAM interface
+    output reg [7:0] addr,
+    output reg [31:0] data_out,
+    output reg we
+);
+
+reg [31:0] hist [0:255];
+integer i;
+
+always @(posedge clk) begin
+    if (rst) begin
+        for (i = 0; i < 256; i = i + 1)
+            hist[i] <= 0;
+        done <= 0;
+    end
+    else if (valid_in) begin
+        hist[pixel_in] <= hist[pixel_in] + 1;
+    end
+end
+
+endmodule
