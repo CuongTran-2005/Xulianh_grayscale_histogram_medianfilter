@@ -1,1 +1,32 @@
-.
+module Xulianh #(
+	 parameter GRAYSCALE = 256,
+	 parameter WIDTH = 430,
+	 parameter HEIGHT = 554,
+	 parameter TOTAL_PIXELS = WIDTH * HEIGHT
+)(
+	 input clk,
+    input rst_n,
+	 input start,
+	 output done
+);
+wire median_done;
+wire histogram_start;
+always @(posedge clk)
+begin
+	if (median_done == 1)
+		histogram_start <=1;
+end
+median_processor u_mp(
+	 .clk (clk),
+	 .rst_n (rst_n),
+	 .start (start),
+	 .done (median_done)
+);
+
+histogram_top u_ht (
+	 .clk (clk),
+	 .rst_n (rst_n),
+	 .start (histogram_start),
+	 .done (done)
+);
+endmodule

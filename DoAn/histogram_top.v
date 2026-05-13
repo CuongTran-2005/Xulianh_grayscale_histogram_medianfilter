@@ -1,0 +1,41 @@
+module histogram_top #(
+	 parameter GRAYSCALE = 256,
+	 parameter WIDTH = 430,
+	 parameter HEIGHT = 554,
+	 parameter TOTAL_PIXELS = WIDTH * HEIGHT
+)(
+	 input clk,
+    input rst_n,
+	 input start,
+	 output done
+);
+
+wire hist_done_wire;
+wire lut_done_wire;
+wire [32 * GRAYSCALE -1:0] hist_bus;
+wire [8 * GRAYSCALE -1:0] lut_bus;
+
+histogram u_hist (
+	 .clk (clk),
+	 .rst_n (rst_n),
+	 .start_hist(start),
+	 .hist_done(hist_done_wire),
+	 .hist_out(hist_bus)
+);
+cdf_lut u_cdf_lut (
+	 .clk (clk),
+	 .rst_n (rst_n),
+	 .cdf_lut_start(hist_done_wire),
+	 .lut_done (lut_done_wire),
+	 .hist_in (hist_bus),
+	 .lut_out (lut_bus)
+);
+equalize u_eq (
+	 .clk (clk),
+	 .rst_n (rst_n),
+	 .equalize_start(lut_done_wire),
+	 .lut_in (lut_bus),
+	 .write_done (done)
+);
+
+endmodule

@@ -1,50 +1,57 @@
-module equalize (
+module equalize #(
+	 parameter GRAYSCALE = 256,
+	 parameter WIDTH = 430,
+	 parameter HEIGHT = 554,
+	 parameter TOTAL_PIXELS = WIDTH * HEIGHT
+)
+(
     input clk,
-    input rst,
-    input start,
-    output reg done
+    input rst_n,
+    input equalize_start,
+	 //input [7:0] image_memory,
+	 input [8 * GRAYSCALE -1:0] lut_in,
+    output reg write_done
+	 //output reg [7:0] anhoutput
 );
 
-parameter WIDTH = 430;
-parameter HEIGHT = 554;
-parameter TOTAL_PIXELS = WIDTH * HEIGHT;
-
-parameter IMAGE_IN  = "Anhinput.txt";
-parameter LUT_FILE  = "lut_output.txt";
+parameter IMAGE_IN  = "Anhoutput.txt";
+//parameter LUT_FILE  = "lut_output.txt";
 parameter IMAGE_OUT = "Anhoutput_equalized.txt";
 
 reg [7:0] image_memory [0:TOTAL_PIXELS-1];
-reg [7:0] lut [0:255];
+//reg [7:0] lut [0:255];
 
+reg [7:0] reg_anhoutput [0:TOTAL_PIXELS-1];
 integer file_out;
 integer i;
 integer x, y;
 
-reg write_done;
+//reg write_done;
+reg equalize_done;
 
 initial begin
     // đọc ảnh
     $readmemh(IMAGE_IN, image_memory);
 
     // đọc LUT
-    $readmemh(LUT_FILE, lut);
+    //$readmemh(LUT_FILE, lut);
 
     // mở file output
     file_out = $fopen(IMAGE_OUT, "w");
 end
 
 
-always @(posedge clk or negedge rst) begin
-    if (!rst) begin
-        done <= 0;
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        equalize_done <= 0;
         x <= 0;
         y <= 0;
         write_done <= 0;
     end
 
-    else if (start && !done) begin
+    else if (equalize_start && !equalize_done) begin
         // mapping pixel
-        image_memory[y*WIDTH + x] <= lut[image_memory[y*WIDTH + x]];
+        reg_anhoutput[y*WIDTH + x] <= lut_in[ image_memory[y*WIDTH+x]*8 +: 8 ];
 
         // duyệt ảnh
         if (x < WIDTH - 1)
@@ -54,21 +61,23 @@ always @(posedge clk or negedge rst) begin
             if (y < HEIGHT - 1)
                 y <= y + 1;
             else
-                done <= 1;
+                equalize_done <= 1;
         end
     end
 end
 
 
 // ghi ảnh ra file
+
 always @(posedge clk) begin
-    if (done && !write_done) begin
+    if (equalize_done && !write_done) begin
         for (i = 0; i < TOTAL_PIXELS; i = i + 1)
-            $fwrite(file_out, "%02h\n", image_memory[i]);
+            $fwrite(file_out, "%02h\n", reg_anhoutput[i]);
 
         $fclose(file_out);
         write_done <= 1;
+		   $display("--- DONE: Da ghi equalize xong ---");
     end
-end
+end 
 
 endmodule

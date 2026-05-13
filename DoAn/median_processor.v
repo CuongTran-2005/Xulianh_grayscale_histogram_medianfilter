@@ -12,6 +12,7 @@ reg [7:0] image_memory [0: TOTAL_PIXELS-1];
 reg [7:0] p0, p1, p2, p3, p4, p5, p6, p7, p8;
 wire [7:0] out_median;
 reg valid_out;
+reg tdone;
 integer x, y, file_out;
 
 initial begin
@@ -26,18 +27,22 @@ median uut (
 	.p6(p6), .p7(p7), .p8(p8),
 	.out_median(out_median)
 );
+always @(posedge clk or negedge rst_n)
+begin
 
+end
 always @(posedge clk or negedge rst_n) 
 begin
 	if (!rst_n) 
 	begin
 		x <= 0; 
 		y <= 0;
-		done <= 0;
+		tdone <= 0;
+		done<=0;
 		valid_out <= 0;
 		{p0,p1,p2,p3,p4,p5,p6,p7,p8} <= 0;
 	end 
-	else if (start && !done) 
+	else if (start && !tdone) 
 	begin
 		valid_out <= 1;
 		// Logic Zero Padding
@@ -62,15 +67,15 @@ begin
 			x <= 0;
 			if (y < HEIGHT - 1) y <= y + 1;
 			else
-			done <= 1;
+			tdone <= 1;
 		end
-	end else if (done) 
+	end else if (tdone && !done) 
 	begin
-		valid_out <=0;
 		$fwrite(file_out, "%h\n", out_median);
 		valid_out <= 0;
 		$fclose(file_out);
-		display("--- DONE: Da ghi du so pixels ---");
+		$display("--- DONE: Da ghi du so pixels ---");
+		done <=1;
 	end
 end
 endmodule
