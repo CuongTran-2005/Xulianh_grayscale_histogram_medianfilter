@@ -1,5 +1,5 @@
 Flow report for Xulianh
-Wed May 13 10:23:32 2026
+Wed May 13 23:47:59 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Flow Failed - Wed May 13 10:23:32 2026          ;
+; Flow Status                        ; Flow Failed - Wed May 13 23:47:59 2026          ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Xulianh                                         ;
 ; Top-level Entity Name              ; median_processor                                ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/13/2026 10:23:29 ;
+; Start date & time ; 05/13/2026 23:47:57 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Xulianh             ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+--------------------------------+---------------+------------------+----------------+
 ; Assignment Name                     ; Value                          ; Default Value ; Entity Name      ; Section Id     ;
 +-------------------------------------+--------------------------------+---------------+------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 40350038314048.177864260923872 ; --            ; --               ; --             ;
+; COMPILER_SIGNATURE_ID               ; 40350038314048.177869087712976 ; --            ; --               ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                    ; --            ; --               ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim (Verilog)             ; <None>        ; --               ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                           ; --            ; --               ; eda_simulation ;
@@ -94,8 +94,8 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 5223 MB             ; 00:00:04                           ;
-; Total                ; 00:00:06     ; --                      ; --                  ; 00:00:04                           ;
+; Analysis & Synthesis ; 00:00:03     ; 1.0                     ; 5092 MB             ; 00:00:03                           ;
+; Total                ; 00:00:03     ; --                      ; --                  ; 00:00:03                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

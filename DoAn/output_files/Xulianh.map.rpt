@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Xulianh
-Wed May 13 10:23:32 2026
+Wed May 13 23:47:59 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed May 13 10:23:32 2026               ;
+; Analysis & Synthesis Status        ; Failed - Wed May 13 23:47:59 2026               ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Xulianh                                         ;
 ; Top-level Entity Name              ; median_processor                                ;
@@ -156,7 +156,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed May 13 10:23:26 2026
+    Info: Processing started: Wed May 13 23:47:56 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Xulianh -c Xulianh
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file tb_median.v
@@ -191,15 +191,14 @@ Warning (10222): Verilog HDL Parameter Declaration warning at histogram.v(17): P
 Warning (10222): Verilog HDL Parameter Declaration warning at equalize.v(17): Parameter Declaration in module "equalize" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
 Warning (10222): Verilog HDL Parameter Declaration warning at equalize.v(19): Parameter Declaration in module "equalize" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
 Info (12127): Elaborating entity "median_processor" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at median_processor.v(16): object "file_out" assigned a value but never read
-Error (10174): Verilog HDL Unsupported Feature error at median_processor.v(20): system function "$fopen" is not supported for synthesis File: D:/HDL/Doan_xulianh/DoAn/median_processor.v Line: 20
+Error (10174): Verilog HDL Unsupported Feature error at median_processor.v(71): system function "$fopen" is not supported for synthesis File: D:/HDL/Doan_xulianh/DoAn/median_processor.v Line: 71
 Error (12153): Can't elaborate top-level user hierarchy
 Info (144001): Generated suppressed messages file D:/HDL/Doan_xulianh/DoAn/output_files/Xulianh.map.smsg
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 5 warnings
-    Error: Peak virtual memory: 5223 megabytes
-    Error: Processing ended: Wed May 13 10:23:32 2026
-    Error: Elapsed time: 00:00:06
-    Error: Total CPU time (on all processors): 00:00:04
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 4 warnings
+    Error: Peak virtual memory: 5092 megabytes
+    Error: Processing ended: Wed May 13 23:47:59 2026
+    Error: Elapsed time: 00:00:03
+    Error: Total CPU time (on all processors): 00:00:03
 
 
 +------------------------------------------+

@@ -1,81 +1,238 @@
-module median_processor(
-input clk,
-input rst_n,
-input start,
-output reg done
+module median_processor #(
+    parameter WIDTH  = 430,
+    parameter HEIGHT = 554,
+    parameter TOTAL_PIXELS = WIDTH * HEIGHT,
+    parameter IMAGE_NAME = "Anhinput.txt"
+)(
+    input  wire clk,
+    input  wire rst_n,
+    input  wire start,
+    output reg  done
 );
-parameter WIDTH = 430;
-parameter HEIGHT = 554;
-parameter TOTAL_PIXELS = WIDTH * HEIGHT;
-parameter IMAGE_NAME = "Anhinput.txt";
-reg [7:0] image_memory [0: TOTAL_PIXELS-1];
-reg [7:0] p0, p1, p2, p3, p4, p5, p6, p7, p8;
+
+////////////////////////////////////////////////////////////
+// MEMORY
+////////////////////////////////////////////////////////////
+
+reg [7:0] image_memory [0:TOTAL_PIXELS-1];
+
+////////////////////////////////////////////////////////////
+// WINDOW PIXELS
+////////////////////////////////////////////////////////////
+
+reg [7:0] p0, p1, p2;
+reg [7:0] p3, p4, p5;
+reg [7:0] p6, p7, p8;
+
 wire [7:0] out_median;
-reg valid_out;
-reg tdone;
-integer x, y, file_out;
+
+////////////////////////////////////////////////////////////
+// CONTROL
+////////////////////////////////////////////////////////////
+
+integer x;
+integer y;
+
+integer addr;
+
+integer pixel_count_load;
+integer pixel_count_write;
+
+integer file_out;
+
+reg processing;
+
+////////////////////////////////////////////////////////////
+// VALID PIPELINE
+////////////////////////////////////////////////////////////
+
+reg valid_window;
+reg valid_write;
+
+////////////////////////////////////////////////////////////
+// MEDIAN MODULE
+////////////////////////////////////////////////////////////
+
+median uut (
+    .p0(p0), .p1(p1), .p2(p2),
+    .p3(p3), .p4(p4), .p5(p5),
+    .p6(p6), .p7(p7), .p8(p8),
+    .out_median(out_median)
+);
+
+////////////////////////////////////////////////////////////
+// INITIAL
+////////////////////////////////////////////////////////////
 
 initial begin
-	$readmemh(IMAGE_NAME, image_memory);
-	file_out = $fopen("Anhoutput.txt", "w");
+
+    $readmemh(IMAGE_NAME, image_memory);
+
+    file_out = $fopen("Anhoutput.txt", "w");
+
+    if(file_out == 0) begin
+        $display("ERROR: Cannot open output file");
+        $finish;
+    end
 end
-	
-// Dua du lieu vao mach median
-median uut (
-	.p0(p0), .p1(p1), .p2(p2),
-	.p3(p3), .p4(p4), .p5(p5),
-	.p6(p6), .p7(p7), .p8(p8),
-	.out_median(out_median)
-);
+
+////////////////////////////////////////////////////////////
+// MAIN PROCESS
+////////////////////////////////////////////////////////////
+
 always @(posedge clk or negedge rst_n)
 begin
 
-end
-always @(posedge clk or negedge rst_n) 
-begin
-	if (!rst_n) 
-	begin
-		x <= 0; 
-		y <= 0;
-		tdone <= 0;
-		done<=0;
-		valid_out <= 0;
-		{p0,p1,p2,p3,p4,p5,p6,p7,p8} <= 0;
-	end 
-	else if (start && !tdone) 
-	begin
-		valid_out <= 1;
-		// Logic Zero Padding
-		p0 <= ((y>0) && (x>0)) ? image_memory[(y-1)*WIDTH + (x-1)] : 8'd0;
-		p1 <= (y>0) ? image_memory[(y-1)*WIDTH + x] : 8'd0;
-		p2 <= ((y>0) && (x<WIDTH-1)) ? image_memory[(y-1)*WIDTH + (x+1)] : 8'd0;
-		p3 <= (x > 0) ? image_memory[y*WIDTH + (x	-1)] : 8'd0;
-		p4 <= image_memory[y*WIDTH + x];
-		p5 <= (x<WIDTH-1) ? image_memory[y*WIDTH + (x+1)] : 8'd0;
+    if(!rst_n)
+    begin
 
-		p6 <= ((y<HEIGHT-1) && (x>0)) ? image_memory[(y+1)*WIDTH + (x-1)] : 8'd0;
-		p7 <= (y<HEIGHT-1) ? image_memory[(y+1)*WIDTH + x] : 8'd0;
-		p8 <= ((y<HEIGHT-1) && (x<WIDTH-1)) ? image_memory[(y+1)*WIDTH + (x+1)] : 8'd0;
-		// Cơ chế ghi file: Delay 1 nhịp để chờ dữ liệu p ổn định 
-		if (valid_out) $fwrite(file_out, "%h\n", out_median);
-		// Quét đủ 430	554
-		if (x < WIDTH - 1) 
-		begin
-			x <= x + 1;
-		end else 
-		begin
-			x <= 0;
-			if (y < HEIGHT - 1) y <= y + 1;
-			else
-			tdone <= 1;
-		end
-	end else if (tdone && !done) 
-	begin
-		$fwrite(file_out, "%h\n", out_median);
-		valid_out <= 0;
-		$fclose(file_out);
-		$display("--- DONE: Da ghi du so pixels ---");
-		done <=1;
-	end
+        x <= 0;
+        y <= 0;
+
+        done <= 0;
+        processing <= 0;
+
+        valid_window <= 0;
+        valid_write  <= 0;
+
+        pixel_count_load  <= 0;
+        pixel_count_write <= 0;
+
+        {p0,p1,p2,p3,p4,p5,p6,p7,p8} <= 0;
+
+    end
+
+    else
+    begin
+
+        //////////////////////////////////////////////////////
+        // START
+        //////////////////////////////////////////////////////
+
+        if(start && !processing && !done)
+        begin
+
+            processing <= 1;
+
+            x <= 0;
+            y <= 0;
+
+            pixel_count_load  <= 0;
+            pixel_count_write <= 0;
+
+            valid_window <= 0;
+            valid_write  <= 0;
+
+        end
+
+        //////////////////////////////////////////////////////
+        // PROCESSING
+        //////////////////////////////////////////////////////
+
+        if(processing)
+        begin
+
+            //////////////////////////////////////////////////
+            // PIPELINE VALID
+            //////////////////////////////////////////////////
+
+            valid_write <= valid_window;
+
+            //////////////////////////////////////////////////
+            // WRITE OUTPUT
+            //////////////////////////////////////////////////
+
+            if(valid_write)
+            begin
+
+                $fwrite(file_out, "%02h\n", out_median);
+
+                pixel_count_write <= pixel_count_write + 1;
+
+                //////////////////////////////////////////////////
+                // FINISH AFTER LAST PIXEL WRITTEN
+                //////////////////////////////////////////////////
+
+                if(pixel_count_write + 1 == TOTAL_PIXELS)
+                begin
+
+                    processing <= 0;
+                    done <= 1;
+
+                    $fclose(file_out);
+
+                    $display("--------------------------------");
+                    $display("MEDIAN FILTER DONE");
+                    $display("TOTAL PIXELS WRITTEN = %d",
+                              pixel_count_write + 1);
+                    $display("--------------------------------");
+
+                end
+            end
+
+            //////////////////////////////////////////////////
+            // LOAD WINDOW
+            //////////////////////////////////////////////////
+
+            if(pixel_count_load < TOTAL_PIXELS)
+            begin
+
+                valid_window <= 1;
+
+                addr = y * WIDTH + x;
+
+                // Row 0
+                p0 <= ((y > 0) && (x > 0)) ?
+                      image_memory[(y-1)*WIDTH + (x-1)] : 8'd0;
+
+                p1 <= (y > 0) ?
+                      image_memory[(y-1)*WIDTH + x] : 8'd0;
+
+                p2 <= ((y > 0) && (x < WIDTH-1)) ?
+                      image_memory[(y-1)*WIDTH + (x+1)] : 8'd0;
+
+                // Row 1
+                p3 <= (x > 0) ?
+                      image_memory[y*WIDTH + (x-1)] : 8'd0;
+
+                p4 <= image_memory[addr];
+
+                p5 <= (x < WIDTH-1) ?
+                      image_memory[y*WIDTH + (x+1)] : 8'd0;
+
+                // Row 2
+                p6 <= ((y < HEIGHT-1) && (x > 0)) ?
+                      image_memory[(y+1)*WIDTH + (x-1)] : 8'd0;
+
+                p7 <= (y < HEIGHT-1) ?
+                      image_memory[(y+1)*WIDTH + x] : 8'd0;
+
+                p8 <= ((y < HEIGHT-1) && (x < WIDTH-1)) ?
+                      image_memory[(y+1)*WIDTH + (x+1)] : 8'd0;
+
+                //////////////////////////////////////////////////
+                // NEXT PIXEL
+                //////////////////////////////////////////////////
+
+                pixel_count_load <= pixel_count_load + 1;
+
+                if(x < WIDTH - 1)
+                begin
+                    x <= x + 1;
+                end
+                else
+                begin
+                    x <= 0;
+                    y <= y + 1;
+                end
+
+            end
+            else
+            begin
+                valid_window <= 0;
+            end
+        end
+    end
 end
+
 endmodule

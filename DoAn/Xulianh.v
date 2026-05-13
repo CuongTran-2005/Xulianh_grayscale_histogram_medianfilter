@@ -16,11 +16,11 @@ begin
 	if (!rst_n)
 	begin
 		histogram_start <=0;
-		$display("--- reset hist_start= %b,  median_done = %b ---", histogram_start, median_done);
+		//$display("--- reset hist_start= %b,  median_done = %b ---", histogram_start, median_done);
 	end
 	else
 	begin
-	$display("hist_start= %b,  median_done = %b ---", histogram_start, median_done);
+	//$display("hist_start= %b,  median_done = %b ---", histogram_start, median_done);
 	if (median_done == 1)
 		histogram_start <=1;
 	end
