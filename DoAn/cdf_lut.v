@@ -1,7 +1,7 @@
 module cdf_lut #(
 	 parameter GRAYSCALE = 256,
-	 parameter WIDTH = 430,
-	 parameter HEIGHT = 554,
+	 parameter WIDTH = 604,
+	 parameter HEIGHT = 345,
 	 parameter TOTAL_PIXELS = WIDTH * HEIGHT
 )
 (

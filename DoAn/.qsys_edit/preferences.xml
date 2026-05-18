@@ -3,17 +3,21 @@
  <debug showDebugMenu="0" />
  <systemtable>
   <columns>
-   <connections preferredWidth="47" />
+   <connections preferredWidth="159" />
    <irq preferredWidth="34" />
+   <name preferredWidth="188" />
+   <inputclock preferredWidth="99" />
   </columns>
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="269" />
-   <clocksource preferredWidth="269" />
-   <frequency preferredWidth="250" />
+   <clockname preferredWidth="540" />
+   <clocksource preferredWidth="540" />
+   <frequency preferredWidth="528" />
   </columns>
  </clocktable>
- <library expandedCategories="Library,Project" />
- <window width="1100" height="800" x="0" y="0" />
+ <library
+   expandedCategories="Library/Interface Protocols/Serial,Library/Bridges,Library/Verification/Debug &amp; Performance,Library/Verification,Project,Library,Library/Interface Protocols,Library/Bridges/Memory-Mapped" />
+ <window width="1920" height="1032" x="0" y="0" />
+ <hdlexample language="VERILOG" />
 </preferences>

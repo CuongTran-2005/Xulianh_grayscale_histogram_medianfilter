@@ -3,8 +3,8 @@ use verilog.vl_types.all;
 entity cdf_lut is
     generic(
         GRAYSCALE       : integer := 256;
-        WIDTH           : integer := 430;
-        HEIGHT          : integer := 554;
+        WIDTH           : integer := 604;
+        HEIGHT          : integer := 345;
         TOTAL_PIXELS    : vl_notype
     );
     port(

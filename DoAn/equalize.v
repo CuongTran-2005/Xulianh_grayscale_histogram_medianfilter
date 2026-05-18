@@ -1,7 +1,7 @@
 module equalize #(
 	 parameter GRAYSCALE = 256,
-	 parameter WIDTH = 430,
-	 parameter HEIGHT = 554,
+	 parameter WIDTH = 604,
+	 parameter HEIGHT = 345,
 	 parameter TOTAL_PIXELS = WIDTH * HEIGHT
 )
 (
@@ -25,13 +25,13 @@ reg [7:0] reg_anhoutput [0:TOTAL_PIXELS-1];
 integer file_out;
 integer i;
 integer x, y;
-
+reg read;
 //reg write_done;
 reg equalize_done;
 
 initial begin
     // đọc ảnh
-    $readmemh(IMAGE_IN, image_memory);
+    //$readmemh(IMAGE_IN, image_memory);
 
     // đọc LUT
     //$readmemh(LUT_FILE, lut);
@@ -39,7 +39,13 @@ initial begin
     // mở file output
     file_out = $fopen(IMAGE_OUT, "w");
 end
-
+always @(posedge clk) begin
+	 if (equalize_start && !read)
+	 begin
+			$readmemh(IMAGE_IN, image_memory);
+			read <= 1;
+	 end
+end
 
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
@@ -47,9 +53,10 @@ always @(posedge clk or negedge rst_n) begin
         x <= 0;
         y <= 0;
         write_done <= 0;
+		  read <= 0;
     end
 
-    else if (equalize_start && !equalize_done) begin
+    else if (equalize_start && !equalize_done && read) begin
         // mapping pixel
         reg_anhoutput[y*WIDTH + x] <= lut_in[ image_memory[y*WIDTH+x]*8 +: 8 ];
 

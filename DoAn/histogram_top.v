@@ -1,7 +1,7 @@
 module histogram_top #(
 	 parameter GRAYSCALE = 256,
-	 parameter WIDTH = 430,
-	 parameter HEIGHT = 554,
+	 parameter WIDTH = 345,
+	 parameter HEIGHT = 604,
 	 parameter TOTAL_PIXELS = WIDTH * HEIGHT
 )(
 	 input clk,

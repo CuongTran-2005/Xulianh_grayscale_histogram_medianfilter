@@ -1,5 +1,5 @@
 Flow report for Xulianh
-Wed May 13 23:47:59 2026
+Mon May 18 10:26:02 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,22 +40,22 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Flow Failed - Wed May 13 23:47:59 2026          ;
+; Flow Status                        ; Successful - Mon May 18 10:26:02 2026           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Xulianh                                         ;
-; Top-level Entity Name              ; median_processor                                ;
+; Top-level Entity Name              ; test1                                           ;
 ; Family                             ; Cyclone II                                      ;
 ; Device                             ; EP2C35F672C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; N/A until Partition Merge                       ;
-;     Total combinational functions  ; N/A until Partition Merge                       ;
-;     Dedicated logic registers      ; N/A until Partition Merge                       ;
-; Total registers                    ; N/A until Partition Merge                       ;
-; Total pins                         ; N/A until Partition Merge                       ;
-; Total virtual pins                 ; N/A until Partition Merge                       ;
-; Total memory bits                  ; N/A until Partition Merge                       ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                       ;
-; Total PLLs                         ; N/A until Partition Merge                       ;
+; Total logic elements               ; 3,625 / 33,216 ( 11 % )                         ;
+;     Total combinational functions  ; 3,381 / 33,216 ( 10 % )                         ;
+;     Dedicated logic registers      ; 1,756 / 33,216 ( 5 % )                          ;
+; Total registers                    ; 1824                                            ;
+; Total pins                         ; 40 / 475 ( 8 % )                                ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 273,408 / 483,840 ( 57 % )                      ;
+; Embedded Multiplier 9-bit elements ; 0 / 70 ( 0 % )                                  ;
+; Total PLLs                         ; 1 / 4 ( 25 % )                                  ;
 +------------------------------------+-------------------------------------------------+
 
 
@@ -64,54 +64,164 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/13/2026 23:47:57 ;
+; Start date & time ; 05/18/2026 10:25:11 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Xulianh             ;
 +-------------------+---------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                         ;
-+-------------------------------------+--------------------------------+---------------+------------------+----------------+
-; Assignment Name                     ; Value                          ; Default Value ; Entity Name      ; Section Id     ;
-+-------------------------------------+--------------------------------+---------------+------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 40350038314048.177869087712976 ; --            ; --               ; --             ;
-; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                    ; --            ; --               ; eda_simulation ;
-; EDA_SIMULATION_TOOL                 ; ModelSim (Verilog)             ; <None>        ; --               ; --             ;
-; EDA_TIME_SCALE                      ; 1 ps                           ; --            ; --               ; eda_simulation ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                             ; --            ; --               ; --             ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                              ; --            ; --               ; --             ;
-; PARTITION_COLOR                     ; 16764057                       ; --            ; median_processor ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING          ; --            ; median_processor ; Top            ;
-; PARTITION_NETLIST_TYPE              ; SOURCE                         ; --            ; median_processor ; Top            ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                   ; --            ; --               ; --             ;
-; TOP_LEVEL_ENTITY                    ; median_processor               ; Xulianh       ; --               ; --             ;
-+-------------------------------------+--------------------------------+---------------+------------------+----------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                ;
++-------------------------------------+---------------------------------------------------------------+---------------+------------------------------------------+----------------+
+; Assignment Name                     ; Value                                                         ; Default Value ; Entity Name                              ; Section Id     ;
++-------------------------------------+---------------------------------------------------------------+---------------+------------------------------------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 40350038314048.177907471109460                                ; --            ; --                                       ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                   ; --            ; --                                       ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim (Verilog)                                            ; <None>        ; --                                       ; --             ;
+; EDA_TIME_SCALE                      ; 1 ps                                                          ; --            ; --                                       ; eda_simulation ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; altera_avalon_sc_fifo                    ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; altera_avalon_st_handshake_clock_crosser ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; altera_merlin_burst_adapter              ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; altera_merlin_master_agent               ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; altera_merlin_master_translator          ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; altera_merlin_slave_agent                ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; altera_merlin_slave_translator           ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; altera_merlin_width_adapter              ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; altera_reset_controller                  ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test                              ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_addr_router                  ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_addr_router_001              ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_altpll_0                     ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_cmd_xbar_demux               ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_cmd_xbar_demux_001           ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_cmd_xbar_mux                 ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_id_router                    ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_id_router_003                ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_id_router_004                ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_irq_mapper                   ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_jtag_uart_0                  ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_new_sdram_controller_0       ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_nios2_qsys_0                 ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_onchip_memory2_0             ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_pio_0                        ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_pio_9                        ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_rsp_xbar_demux               ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_rsp_xbar_demux_004           ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_rsp_xbar_mux                 ; --             ;
+; IP_TOOL_ENV                         ; Qsys                                                          ; --            ; system_test_rsp_xbar_mux_001             ; --             ;
+; IP_TOOL_NAME                        ; RAM: 1-PORT                                                   ; --            ; --                                       ; --             ;
+; IP_TOOL_NAME                        ; altera_avalon_sc_fifo                                         ; --            ; altera_avalon_sc_fifo                    ; --             ;
+; IP_TOOL_NAME                        ; altera_avalon_st_handshake_clock_crosser                      ; --            ; altera_avalon_st_handshake_clock_crosser ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_burst_adapter                                   ; --            ; altera_merlin_burst_adapter              ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_master_agent                                    ; --            ; altera_merlin_master_agent               ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_master_translator                               ; --            ; altera_merlin_master_translator          ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_slave_agent                                     ; --            ; altera_merlin_slave_agent                ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_slave_translator                                ; --            ; altera_merlin_slave_translator           ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_width_adapter                                   ; --            ; altera_merlin_width_adapter              ; --             ;
+; IP_TOOL_NAME                        ; altera_reset_controller                                       ; --            ; altera_reset_controller                  ; --             ;
+; IP_TOOL_NAME                        ; Qsys                                                          ; --            ; system_test                              ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_router                                          ; --            ; system_test_addr_router                  ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_router                                          ; --            ; system_test_addr_router_001              ; --             ;
+; IP_TOOL_NAME                        ; altpll                                                        ; --            ; system_test_altpll_0                     ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_demultiplexer                                   ; --            ; system_test_cmd_xbar_demux               ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_demultiplexer                                   ; --            ; system_test_cmd_xbar_demux_001           ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_multiplexer                                     ; --            ; system_test_cmd_xbar_mux                 ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_router                                          ; --            ; system_test_id_router                    ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_router                                          ; --            ; system_test_id_router_003                ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_router                                          ; --            ; system_test_id_router_004                ; --             ;
+; IP_TOOL_NAME                        ; altera_irq_mapper                                             ; --            ; system_test_irq_mapper                   ; --             ;
+; IP_TOOL_NAME                        ; altera_avalon_jtag_uart                                       ; --            ; system_test_jtag_uart_0                  ; --             ;
+; IP_TOOL_NAME                        ; altera_avalon_new_sdram_controller                            ; --            ; system_test_new_sdram_controller_0       ; --             ;
+; IP_TOOL_NAME                        ; altera_nios2_qsys                                             ; --            ; system_test_nios2_qsys_0                 ; --             ;
+; IP_TOOL_NAME                        ; altera_avalon_onchip_memory2                                  ; --            ; system_test_onchip_memory2_0             ; --             ;
+; IP_TOOL_NAME                        ; altera_avalon_pio                                             ; --            ; system_test_pio_0                        ; --             ;
+; IP_TOOL_NAME                        ; altera_avalon_pio                                             ; --            ; system_test_pio_9                        ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_demultiplexer                                   ; --            ; system_test_rsp_xbar_demux               ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_demultiplexer                                   ; --            ; system_test_rsp_xbar_demux_004           ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_multiplexer                                     ; --            ; system_test_rsp_xbar_mux                 ; --             ;
+; IP_TOOL_NAME                        ; altera_merlin_multiplexer                                     ; --            ; system_test_rsp_xbar_mux_001             ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; --                                       ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; altera_avalon_sc_fifo                    ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; altera_avalon_st_handshake_clock_crosser ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; altera_merlin_burst_adapter              ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; altera_merlin_master_agent               ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; altera_merlin_master_translator          ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; altera_merlin_slave_agent                ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; altera_merlin_slave_translator           ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; altera_merlin_width_adapter              ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; altera_reset_controller                  ; --             ;
+; IP_TOOL_VERSION                     ; 13.0sp1                                                       ; --            ; system_test                              ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_addr_router                  ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_addr_router_001              ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_altpll_0                     ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_cmd_xbar_demux               ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_cmd_xbar_demux_001           ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_cmd_xbar_mux                 ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_id_router                    ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_id_router_003                ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_id_router_004                ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_irq_mapper                   ; --             ;
+; IP_TOOL_VERSION                     ; 13.0.1.99.2                                                   ; --            ; system_test_jtag_uart_0                  ; --             ;
+; IP_TOOL_VERSION                     ; 13.0.1.99.2                                                   ; --            ; system_test_new_sdram_controller_0       ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_nios2_qsys_0                 ; --             ;
+; IP_TOOL_VERSION                     ; 13.0.1.99.2                                                   ; --            ; system_test_onchip_memory2_0             ; --             ;
+; IP_TOOL_VERSION                     ; 13.0.1.99.2                                                   ; --            ; system_test_pio_0                        ; --             ;
+; IP_TOOL_VERSION                     ; 13.0.1.99.2                                                   ; --            ; system_test_pio_9                        ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_rsp_xbar_demux               ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_rsp_xbar_demux_004           ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_rsp_xbar_mux                 ; --             ;
+; IP_TOOL_VERSION                     ; 13.0                                                          ; --            ; system_test_rsp_xbar_mux_001             ; --             ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                            ; --            ; --                                       ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                             ; --            ; --                                       ; --             ;
+; MISC_FILE                           ; system_test/synthesis/../../system_test.cmp                   ; --            ; --                                       ; --             ;
+; MISC_FILE                           ; system_test/synthesis/../../system_test.qsys                  ; --            ; --                                       ; --             ;
+; MISC_FILE                           ; RAM_1port_bb.v                                                ; --            ; --                                       ; --             ;
+; PARTITION_COLOR                     ; 16764057                                                      ; --            ; test1                                    ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                                         ; --            ; test1                                    ; Top            ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                                                        ; --            ; test1                                    ; Top            ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                  ; --            ; --                                       ; --             ;
+; SLD_INFO                            ; QSYS_NAME system_test HAS_SOPCINFO 1 GENERATION_ID 1779074657 ; --            ; system_test                              ; --             ;
+; SOPCINFO_FILE                       ; system_test/synthesis/../../system_test.sopcinfo              ; --            ; --                                       ; --             ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                            ; --            ; --                                       ; --             ;
+; TOP_LEVEL_ENTITY                    ; test1                                                         ; Xulianh       ; --                                       ; --             ;
++-------------------------------------+---------------------------------------------------------------+---------------+------------------------------------------+----------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:03     ; 1.0                     ; 5092 MB             ; 00:00:03                           ;
-; Total                ; 00:00:03     ; --                      ; --                  ; 00:00:03                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:14     ; 1.0                     ; 4803 MB             ; 00:00:13                           ;
+; Fitter                    ; 00:00:22     ; 1.0                     ; 4952 MB             ; 00:00:21                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 4597 MB             ; 00:00:03                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4609 MB             ; 00:00:02                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 4584 MB             ; 00:00:03                           ;
+; Total                     ; 00:00:44     ; --                      ; --                  ; 00:00:42                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------+
-; Flow OS Summary                                                                   ;
-+----------------------+------------------+-----------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+----------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis ; LAPTOP-UPD5H7RF  ; Windows 7 ; 6.2        ; x86_64         ;
-+----------------------+------------------+-----------+------------+----------------+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; LAPTOP-UPD5H7RF  ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; LAPTOP-UPD5H7RF  ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; LAPTOP-UPD5H7RF  ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; LAPTOP-UPD5H7RF  ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; LAPTOP-UPD5H7RF  ; Windows 7 ; 6.2        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off Xulianh -c Xulianh
+quartus_fit --read_settings_files=off --write_settings_files=off Xulianh -c Xulianh
+quartus_asm --read_settings_files=off --write_settings_files=off Xulianh -c Xulianh
+quartus_sta Xulianh -c Xulianh
+quartus_eda --read_settings_files=off --write_settings_files=off Xulianh -c Xulianh
 
 
 

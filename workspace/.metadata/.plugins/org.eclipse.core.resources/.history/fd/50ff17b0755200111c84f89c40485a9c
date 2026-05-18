@@ -1,0 +1,339 @@
+/*
+ * median_test_1.c
+ *
+ *  Created on: May 16, 2026
+ *      Author: TDC
+ */
+
+
+
+/* median_test.c
+ * Flow:
+ *  1. Tạo dữ liệu test → ghi vào SDRAM
+ *  2. Đọc từng cửa sổ 3x3 từ SDRAM → ghi vào PIO (p0..p8)
+ *  3. Đọc out_median từ PIO_9
+ *  4. Ghi kết quả vào vùng output SDRAM
+ *  5. In kết quả ra terminal
+ */
+
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+
+// ============================================================
+// Địa chỉ từ BSP (khớp với Address Map trong Qsys)
+// ============================================================
+#define SDRAM_BASE     NEW_SDRAM_CONTROLLER_0_BASE  // 0x00800000
+
+// PIO base addresses - lấy từ system.h được generate
+#define PIO_P0_BASE    PIO_0_BASE
+#define PIO_P1_BASE    PIO_1_BASE
+#define PIO_P2_BASE    PIO_2_BASE
+#define PIO_P3_BASE    PIO_3_BASE
+#define PIO_P4_BASE    PIO_4_BASE
+#define PIO_P5_BASE    PIO_5_BASE
+#define PIO_P6_BASE    PIO_6_BASE
+#define PIO_P7_BASE    PIO_7_BASE
+#define PIO_P8_BASE    PIO_8_BASE
+#define PIO_OUT_MEDIAN_BASE  PIO_9_BASE
+
+// ============================================================
+// Cấu hình ảnh test
+// ============================================================
+#define IMG_WIDTH   8     // Chiều rộng ảnh test
+#define IMG_HEIGHT  8     // Chiều cao ảnh test
+#define IMG_SIZE    (IMG_WIDTH * IMG_HEIGHT)
+
+// Offset trong SDRAM
+#define SDRAM_INPUT_OFFSET   0        // Ảnh đầu vào tại 0x00800000
+#define SDRAM_OUTPUT_OFFSET  (IMG_SIZE * 2) // Ảnh đầu ra (cách 2 byte/pixel vì SDRAM 16-bit)
+
+// ============================================================
+// Hàm ghi pixel vào SDRAM (16-bit access)
+// ============================================================
+static inline void sdram_write_pixel(uint32_t offset, uint8_t value)
+{
+    volatile uint16_t *ptr = (volatile uint16_t *)(SDRAM_BASE + offset*2);
+    *ptr = (uint16_t)value;
+}
+
+// ============================================================
+// Hàm đọc pixel từ SDRAM
+// ============================================================
+static inline uint8_t sdram_read_pixel(uint32_t offset)
+{
+    volatile uint16_t *ptr = (volatile uint16_t *)(SDRAM_BASE + offset * 2);
+    return (uint8_t)(*ptr & 0xFF);
+}
+
+// ============================================================
+// Hàm ghi 9 pixel vào PIO → kích hoạt median hardware
+// ============================================================
+static inline void write_window_to_pio(uint8_t p[9])
+{
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_P0_BASE, p[0]);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_P1_BASE, p[1]);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_P2_BASE, p[2]);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_P3_BASE, p[3]);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_P4_BASE, p[4]);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_P5_BASE, p[5]);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_P6_BASE, p[6]);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_P7_BASE, p[7]);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_P8_BASE, p[8]);
+}
+
+// ============================================================
+// Hàm đọc kết quả median từ PIO_9
+// ============================================================
+static inline uint8_t read_median_result(void)
+{
+    // Thêm delay nhỏ để median hardware ổn định
+    // (combinational logic, thường chỉ cần 1 cycle)
+    volatile int i;
+    for (i = 0; i < 10; i++);
+
+    return (uint8_t)(IORD_ALTERA_AVALON_PIO_DATA(PIO_OUT_MEDIAN_BASE) & 0xFF);
+}
+
+// ============================================================
+// Hàm tính median bằng phần mềm (để verify hardware)
+// ============================================================
+static uint8_t software_median(uint8_t p[9])
+{
+    uint8_t sorted[9];
+    memcpy(sorted, p, 9);
+
+    // Bubble sort đơn giản
+    int i, j;
+    for (i = 0; i < 9; i++) {
+        for (j = i + 1; j < 9; j++) {
+            if (sorted[i] > sorted[j]) {
+                uint8_t tmp = sorted[i];
+                sorted[i] = sorted[j];
+                sorted[j] = tmp;
+            }
+        }
+    }
+    return sorted[4]; // Median là phần tử thứ 5
+}
+
+// ============================================================
+// In ảnh ra terminal
+// ============================================================
+static void print_image(const char *title, uint8_t *img, int w, int h)
+{
+    printf("\n=== %s (%dx%d) ===\n", title, w, h);
+    int r, c;
+    for (r = 0; r < h; r++) {
+        for (c = 0; c < w; c++) {
+            printf("%4d", img[r * w + c]);
+        }
+        printf("\n");
+    }
+}
+
+// ============================================================
+// MAIN
+// ============================================================
+int main(void)
+{
+	/*printf("\ntest");
+	uint16_t abc, abc2;
+	sdram_write_pixel(0, 100);
+	sdram_write_pixel(1, 200);
+	abc = sdram_read_pixel (0);
+	abc2 = sdram_read_pixel (1);
+	uint16_t *xyz =(uint16_t)(SDRAM_BASE + 2);
+	uint16_t gxyz = &xyz;
+	printf("\nget test , abc = %d,  %d,    %d", abc,abc2,gxyz); */
+    printf("\n");
+    printf("================================================\n");
+    printf("  Median Filter Test - Nios II + Hardware\n");
+    printf("================================================\n\n");
+
+    // ----------------------------------------------------------
+    // BƯỚC 1: Tạo ảnh test và ghi vào SDRAM
+    // ----------------------------------------------------------
+    printf("[1] Tao anh test va ghi vao SDRAM...\n");
+
+    // Ảnh test 8x8 với noise (giá trị ngẫu nhiên + 1 điểm nhiễu)
+    uint8_t input_img[IMG_SIZE] = {
+        10,  20,  30,  40,  50,  60,  70,  80,
+        15,  25, 255,  45,  55,  65,  75,  85,  // 255 = noise
+        20,  30,  40,  50,  60,  70,  80,  90,
+        25,  35,  45,   0,  65,  75,  85,  95,  // 0 = noise
+        30,  40,  50,  60,  70,  80,  90, 100,
+        35,  45,  55,  65,  75,  85,  95, 105,
+        40,  50,  60,  70, 255,  90, 100, 110,  // 255 = noise
+        45,  55,  65,  75,  85,  95, 105, 115
+    };
+
+    // Ghi ảnh đầu vào vào SDRAM
+    int i;
+    for (i = 0; i < IMG_SIZE; i++) {
+        sdram_write_pixel(SDRAM_INPUT_OFFSET + i, input_img[i]);
+    }
+
+    // Verify ghi thành công bằng cách đọc lại
+    int write_ok = 1;
+    for (i = 0; i < IMG_SIZE; i++) {
+        uint8_t readback = sdram_read_pixel(SDRAM_INPUT_OFFSET + i);
+        if (readback != input_img[i]) {
+            printf("  ERROR: SDRAM write verify failed at pixel %d"
+                   " (wrote %d, read %d)\n", i, input_img[i], readback);
+            write_ok = 0;
+        }
+    }
+
+    if (write_ok) {
+        printf("  OK: Da ghi %d pixels vao SDRAM tai 0x%08X\n",
+               IMG_SIZE, SDRAM_BASE + SDRAM_INPUT_OFFSET * 2);
+    } else {
+        printf("  FAIL: Loi ghi SDRAM!\n");
+        return -1;
+    }
+
+    uint16_t abc2;
+    abc2 = sdram_read_pixel (65);
+    printf("\nget test , abc2 =    %d", abc2);
+
+    print_image("ANH DAU VAO (tu SDRAM)", input_img, IMG_WIDTH, IMG_HEIGHT);
+
+    // ----------------------------------------------------------
+    // BƯỚC 2: Áp dụng median filter qua hardware
+    //         Xử lý từng cửa sổ 3x3, bỏ qua border (1 pixel)
+    // ----------------------------------------------------------
+    printf("\n[2] Chay Median Filter qua Hardware PIO + median.v...\n");
+
+    uint8_t output_img[IMG_SIZE];
+    memset(output_img, 0, IMG_SIZE);
+
+    int errors = 0;
+    int total_processed = 0;
+    int row, col;
+
+    for (row = 0; row < IMG_HEIGHT; row++) {
+        for (col = 0; col < IMG_WIDTH; col++) {
+        	printf("\n run at row= %d, col= %d", row, col);
+            uint8_t result;
+
+            if (row == 0 || row == IMG_HEIGHT-1 ||
+                col == 0 || col == IMG_WIDTH-1)
+            {
+                // Border: copy nguyên giá trị gốc
+                result = sdram_read_pixel(SDRAM_INPUT_OFFSET + row * IMG_WIDTH + col);
+                printf("\n result = %h", result);
+            }
+            else
+            {
+                // Lấy cửa sổ 3x3 từ SDRAM
+            	//
+                uint8_t window[9];
+                window[0] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row-1)*IMG_WIDTH + (col-1));
+                window[1] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row-1)*IMG_WIDTH + (col  ));
+                window[2] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row-1)*IMG_WIDTH + (col+1));
+                window[3] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row  )*IMG_WIDTH + (col-1));
+                window[4] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row  )*IMG_WIDTH + (col  ));
+                window[5] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row  )*IMG_WIDTH + (col+1));
+                window[6] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row+1)*IMG_WIDTH + (col-1));
+                window[7] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row+1)*IMG_WIDTH + (col  ));
+                window[8] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row+1)*IMG_WIDTH + (col+1));
+
+                // Ghi cửa sổ vào PIO → Hardware median tính toán
+                write_window_to_pio(window);
+
+                // Đọc kết quả từ hardware
+                uint8_t hw_result = read_median_result();
+
+                // Verify bằng software median
+                uint8_t sw_result = software_median(window);
+
+                if (hw_result != sw_result) {
+                    printf("  MISMATCH tại pixel (%d,%d): HW=%d, SW=%d\n",
+                           row, col, hw_result, sw_result);
+                    errors++;
+                }
+
+                result = hw_result;
+                total_processed++;
+                printf("\n result = %h,  total_processed = %d", result, total_processed);
+            }
+
+            output_img[row * IMG_WIDTH + col] = result;
+        }
+    }
+
+    printf("  Da xu ly %d pixels (bo qua %d border pixels)\n",
+           total_processed, IMG_SIZE - total_processed);
+
+    if (errors == 0) {
+        printf("  OK: Hardware median CHINH XAC - 0 loi!\n");
+    } else {
+        printf("  FAIL: %d loi - Hardware vs Software khong khop!\n", errors);
+    }
+
+    // ----------------------------------------------------------
+    // BƯỚC 3: Ghi kết quả output vào SDRAM
+    // ----------------------------------------------------------
+    printf("\n[3] Ghi ket qua vao SDRAM...\n");
+
+    for (i = 0; i < IMG_SIZE; i++) {
+        sdram_write_pixel(SDRAM_OUTPUT_OFFSET + i, output_img[i]);
+    }
+
+    // Verify output
+    int read_ok = 1;
+    for (i = 0; i < IMG_SIZE; i++) {
+        uint8_t readback = sdram_read_pixel(SDRAM_OUTPUT_OFFSET + i);
+        if (readback != output_img[i]) {
+            printf("  ERROR: Output SDRAM verify failed at pixel %d\n", i);
+            read_ok = 0;
+        }
+    }
+
+    if (read_ok) {
+        printf("  OK: Da ghi %d pixels output vao SDRAM tai 0x%08X\n",
+               IMG_SIZE, SDRAM_BASE + SDRAM_OUTPUT_OFFSET * 2);
+    }
+
+    print_image("ANH SAU MEDIAN FILTER (tu SDRAM)", output_img, IMG_WIDTH, IMG_HEIGHT);
+
+    // ----------------------------------------------------------
+    // BƯỚC 4: So sánh chi tiết
+    // ----------------------------------------------------------
+    printf("\n[4] So sanh truoc/sau filter:\n");
+    printf("Row Col |  Input | Output | Changed\n");
+    printf("--------|--------|--------|--------\n");
+
+    for (row = 1; row < IMG_HEIGHT-1; row++) {
+        for (col = 1; col < IMG_WIDTH-1; col++) {
+            int idx = row * IMG_WIDTH + col;
+            uint8_t in_val  = input_img[idx];
+            uint8_t out_val = output_img[idx];
+            if (in_val != out_val) {
+                printf("  %2d  %2d |  %4d  |  %4d  |  <-- NOISE REMOVED\n",
+                       row, col, in_val, out_val);
+            }
+        }
+    }
+
+    // ----------------------------------------------------------
+    // BƯỚC 5: Kết quả cuối
+    // ----------------------------------------------------------
+    printf("\n================================================\n");
+    if (errors == 0 && write_ok && read_ok) {
+        printf("  THANH CONG!\n");
+        printf("  - Ghi du lieu vao SDRAM: OK\n");
+        printf("  - Median HW chinh xac:   OK\n");
+        printf("  - Ghi ket qua ra SDRAM:  OK\n");
+        printf("  - Doc ket qua tu SDRAM:  OK\n");
+    } else {
+        printf("  CO LOI - Kiem tra lai!\n");
+    }
+    printf("================================================\n");
+
+    return 0;
+}

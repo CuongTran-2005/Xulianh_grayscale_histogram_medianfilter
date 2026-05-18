@@ -1,14 +1,21 @@
 module median_processor #(
-    parameter WIDTH  = 430,
-    parameter HEIGHT = 554,
+    parameter WIDTH  = 604,
+    parameter HEIGHT = 345,
     parameter TOTAL_PIXELS = WIDTH * HEIGHT,
     parameter IMAGE_NAME = "Anhinput.txt"
 )(
     input  wire clk,
     input  wire rst_n,
     input  wire start,
-    output reg  done
+    output reg  done,
+	 
+	 input [7:0] data_in_ram,
+	 input [19:0] addr_ram,
+	 input we_ram,
+	 output reg data_out_ram,
+	 output reg data_out_median
 );
+
 
 ////////////////////////////////////////////////////////////
 // MEMORY
@@ -16,6 +23,25 @@ module median_processor #(
 
 reg [7:0] image_memory [0:TOTAL_PIXELS-1];
 
+always @(posedge clk or negedge rst_n) begin
+        if(!rst_n) begin
+            data_out_ram <= 8'd0;
+
+            // optional clear memory
+            /*
+            for(i = 0; i < (1<<20); i = i + 1)
+                mem[i] <= 8'd0;
+            */
+        end
+        else begin
+
+            // write
+            if(we_ram)
+                image_memory[addr_ram] <= data_in_ram;
+            // read
+            data_out_ram <= image_memory[addr_ram];
+        end
+    end
 ////////////////////////////////////////////////////////////
 // WINDOW PIXELS
 ////////////////////////////////////////////////////////////
@@ -63,7 +89,7 @@ median uut (
 ////////////////////////////////////////////////////////////
 // INITIAL
 ////////////////////////////////////////////////////////////
-
+/*
 initial begin
 
     $readmemh(IMAGE_NAME, image_memory);
@@ -75,10 +101,12 @@ initial begin
         $finish;
     end
 end
-
+*/
 ////////////////////////////////////////////////////////////
 // MAIN PROCESS
 ////////////////////////////////////////////////////////////
+
+
 
 always @(posedge clk or negedge rst_n)
 begin
@@ -131,7 +159,7 @@ begin
 
         if(processing)
         begin
-
+  
             //////////////////////////////////////////////////
             // PIPELINE VALID
             //////////////////////////////////////////////////
@@ -145,8 +173,8 @@ begin
             if(valid_write)
             begin
 
-                $fwrite(file_out, "%02h\n", out_median);
-
+                //$fwrite(file_out, "%02h\n", out_median);
+					 data_out_median <= out_median;
                 pixel_count_write <= pixel_count_write + 1;
 
                 //////////////////////////////////////////////////
@@ -159,13 +187,14 @@ begin
                     processing <= 0;
                     done <= 1;
 
-                    $fclose(file_out);
-
+                    //$fclose(file_out);
+						  /*
                     $display("--------------------------------");
                     $display("MEDIAN FILTER DONE");
                     $display("TOTAL PIXELS WRITTEN = %d",
                               pixel_count_write + 1);
                     $display("--------------------------------");
+						  */
 
                 end
             end

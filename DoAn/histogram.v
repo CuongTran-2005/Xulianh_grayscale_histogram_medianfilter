@@ -1,7 +1,7 @@
 module histogram #(
 	 parameter GRAYSCALE = 256,
-	 parameter WIDTH = 430,
-	 parameter HEIGHT = 554,
+	 parameter WIDTH = 604,
+	 parameter HEIGHT = 345,
 	 parameter TOTAL_PIXELS = WIDTH * HEIGHT
 )
 (
@@ -17,17 +17,24 @@ module histogram #(
 parameter IMAGE_NAME = "Anhoutput.txt";
 reg [7:0] image_memory [0: TOTAL_PIXELS-1];
 reg doing;
+reg read;
 //reg [31:0] hist [0:255];
 
 integer i, x, y;
 //integer file_out;
 //reg write_done;
 
-initial begin
+/*initial begin
     $readmemh(IMAGE_NAME, image_memory);
 //    file_out = $fopen("Anhoutput.txt", "w");
+end*/
+always @(posedge clk) begin
+	 if (start_hist && !read)
+	 begin
+			$readmemh(IMAGE_NAME, image_memory);
+			read <= 1;
+	 end
 end
-
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         for (i = 0; i < 256; i = i + 1)
@@ -36,9 +43,10 @@ always @(posedge clk or negedge rst_n) begin
 		  doing <=0;
         x <= 0;
         y <= 0;
+		  read <= 0;
         //write_done <= 0;
     end
-    else if (start_hist && !hist_done) begin
+    else if (start_hist && !hist_done && read) begin
         //hist_out[32*image_memory +: 32] <= hist_out[32*image_memory +: 32] + 1;
 		  hist_out[image_memory[y*WIDTH + x]*32 +: 32] <= hist_out[image_memory[y*WIDTH + x]*32+:32] + 1;
         if (x < WIDTH - 1)
