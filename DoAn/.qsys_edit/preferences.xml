@@ -11,13 +11,13 @@
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="540" />
-   <clocksource preferredWidth="540" />
+   <clockname preferredWidth="539" />
+   <clocksource preferredWidth="539" />
    <frequency preferredWidth="528" />
   </columns>
  </clocktable>
  <library
-   expandedCategories="Library/Interface Protocols/Serial,Library/Bridges,Library/Verification/Debug &amp; Performance,Library/Verification,Project,Library,Library/Interface Protocols,Library/Bridges/Memory-Mapped" />
- <window width="1920" height="1032" x="0" y="0" />
+   expandedCategories="Library/Peripherals,Library/Peripherals/Microcontroller Peripherals,Project,Library" />
+ <window width="1918" height="1030" x="1" y="1" />
  <hdlexample language="VERILOG" />
 </preferences>

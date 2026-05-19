@@ -2,48 +2,61 @@
 **** Build of configuration Nios II for project median_test ****
 
 make all 
-      1 [main] sh 3504 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      1 [main] sh 14196 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      1 [main] sh 10564 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      1 [main] sh 11588 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      1 [main] echo 22312 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      1 [main] echo 13928 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 Info: Building ../median_test_bsp/
 the public mailing list cygwin@cygwin.com
 make --no-print-directory -C ../median_test_bsp/
-      1 [main] pwd 10876 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      2 [main] pwd 8 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      1 [main] sh 8028 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      1 [main] sh 20400 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      1 [main] sh 2464 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      1 [main] sh 23968 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
 [BSP build complete]
-      1 [main] echo 20768 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
-the public mailing list cygwin@cygwin.com
+      1 [main] echo 9144 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 Info: Compiling median_test_1.c to obj/default/median_test_1.o
-      1 [main] mkdir 13920 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] mkdir 5900 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
 nios2-elf-gcc -xc -MP -MMD -c -I../median_test_bsp//HAL/inc -I../median_test_bsp/ -I../median_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/median_test_1.o median_test_1.c
 median_test_1.c: In function 'main':
-median_test_1.c:232: warning: conversion lacks type at end of format
-median_test_1.c:232: warning: too many arguments for format
-median_test_1.c:232: warning: conversion lacks type at end of format
-median_test_1.c:232: warning: too many arguments for format
-median_test_1.c:275: warning: unknown conversion type character ',' in format
-median_test_1.c:275: warning: too many arguments for format
-median_test_1.c:275: warning: unknown conversion type character ',' in format
-median_test_1.c:275: warning: too many arguments for format
-median_test_1.c:361: warning: implicit declaration of function 'IORD_ALTERA_AVALON_JTAG_UART_DATA'
+median_test_1.c:234: warning: conversion lacks type at end of format
+median_test_1.c:234: warning: too many arguments for format
+median_test_1.c:234: warning: conversion lacks type at end of format
+median_test_1.c:234: warning: too many arguments for format
+median_test_1.c:277: warning: unknown conversion type character ',' in format
+median_test_1.c:277: warning: too many arguments for format
+median_test_1.c:277: warning: unknown conversion type character ',' in format
+median_test_1.c:277: warning: too many arguments for format
 median_test_1.c: At top level:
-median_test_1.c:109: warning: 'software_median' defined but not used
-      1 [main] true 13524 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+median_test_1.c:111: warning: 'software_median' defined but not used
+      1 [main] true 17472 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      1 [main] echo 8348 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      1 [main] echo 7120 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 Info: Linking median_test.elf
 the public mailing list cygwin@cygwin.com
 nios2-elf-g++  -T'../median_test_bsp//linker.x' -msys-crt0='../median_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../median_test_bsp/  -msmallc  -Wl,-Map=median_test.map   -O0 -g -Wall   -EL -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o median_test.elf obj/default/median_test_1.o -lm 
-obj/default/median_test_1.o: In function `main':
-D:\HDL\Doan_xulianh\DoAn\software\median_test/median_test_1.c:361: undefined reference to `IORD_ALTERA_AVALON_JTAG_UART_DATA'
-collect2: ld returned 1 exit status
-make: *** [median_test.elf] Error 1
+nios2-elf-insert median_test.elf --thread_model hal --cpu_name nios2_qsys_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name system_test --quartus_project_dir "D:/HDL/Doan_xulianh/DoAn" --sopcinfo D:/HDL/Doan_xulianh/DoAn/system_test.sopcinfo
+      1 [main] sh 11280 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] uname 8260 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5856 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (median_test.elf) 13 KBytes program size (code + initialized data).
+Info:                   8177 KBytes free for stack + heap.
+      1 [main] echo 1876 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating median_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source median_test.elf >median_test.objdump
+      1 [main] sh 4120 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12464 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[median_test build complete]
 
 **** Build Finished ****

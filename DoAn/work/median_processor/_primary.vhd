@@ -2,8 +2,8 @@ library verilog;
 use verilog.vl_types.all;
 entity median_processor is
     generic(
-        WIDTH           : integer := 604;
-        HEIGHT          : integer := 345;
+        WIDTH           : integer := 698;
+        HEIGHT          : integer := 463;
         TOTAL_PIXELS    : vl_notype;
         IMAGE_NAME      : string  := "Anhinput.txt"
     );

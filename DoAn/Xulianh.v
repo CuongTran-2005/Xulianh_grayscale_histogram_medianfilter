@@ -1,7 +1,7 @@
 module Xulianh #(
 	 parameter GRAYSCALE = 256,
-	 parameter WIDTH = 430,
-	 parameter HEIGHT = 554,
+	 parameter WIDTH = 698,
+	 parameter HEIGHT = 463,
 	 parameter TOTAL_PIXELS = WIDTH * HEIGHT
 )(
 	 input clk,

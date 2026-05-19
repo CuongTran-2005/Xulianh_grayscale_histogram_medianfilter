@@ -2,7 +2,7 @@ set_global_assignment -entity "system_test" -library "system_test" -name IP_TOOL
 set_global_assignment -entity "system_test" -library "system_test" -name IP_TOOL_VERSION "13.0sp1"
 set_global_assignment -entity "system_test" -library "system_test" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "system_test" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../system_test.sopcinfo"]
-set_instance_assignment -entity "system_test" -library "system_test" -name SLD_INFO "QSYS_NAME system_test HAS_SOPCINFO 1 GENERATION_ID 1779074657"
+set_instance_assignment -entity "system_test" -library "system_test" -name SLD_INFO "QSYS_NAME system_test HAS_SOPCINFO 1 GENERATION_ID 1779165744"
 set_global_assignment -library "system_test" -name MISC_FILE [file join $::quartus(qip_path) "../../system_test.cmp"]
 set_global_assignment -name SYNTHESIS_ONLY_QIP ON
 set_global_assignment -library "system_test" -name MISC_FILE [file join $::quartus(qip_path) "../../system_test.qsys"]
@@ -37,6 +37,8 @@ set_global_assignment -library "system_test" -name SYSTEMVERILOG_FILE [file join
 set_global_assignment -library "system_test" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_agent.sv"]
 set_global_assignment -library "system_test" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_slave_translator.sv"]
 set_global_assignment -library "system_test" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_translator.sv"]
+set_global_assignment -library "system_test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/system_test_pio_11.v"]
+set_global_assignment -library "system_test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/system_test_pio_10.v"]
 set_global_assignment -library "system_test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/system_test_pio_9.v"]
 set_global_assignment -library "system_test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/system_test_pio_0.v"]
 set_global_assignment -library "system_test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/system_test_altpll_0.v"]
@@ -121,6 +123,12 @@ set_global_assignment -entity "altera_merlin_slave_translator" -library "system_
 set_global_assignment -entity "altera_merlin_master_translator" -library "system_test" -name IP_TOOL_NAME "altera_merlin_master_translator"
 set_global_assignment -entity "altera_merlin_master_translator" -library "system_test" -name IP_TOOL_VERSION "13.0"
 set_global_assignment -entity "altera_merlin_master_translator" -library "system_test" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "system_test_pio_11" -library "system_test" -name IP_TOOL_NAME "altera_avalon_pio"
+set_global_assignment -entity "system_test_pio_11" -library "system_test" -name IP_TOOL_VERSION "13.0.1.99.2"
+set_global_assignment -entity "system_test_pio_11" -library "system_test" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "system_test_pio_10" -library "system_test" -name IP_TOOL_NAME "altera_avalon_pio"
+set_global_assignment -entity "system_test_pio_10" -library "system_test" -name IP_TOOL_VERSION "13.0.1.99.2"
+set_global_assignment -entity "system_test_pio_10" -library "system_test" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "system_test_pio_9" -library "system_test" -name IP_TOOL_NAME "altera_avalon_pio"
 set_global_assignment -entity "system_test_pio_9" -library "system_test" -name IP_TOOL_VERSION "13.0.1.99.2"
 set_global_assignment -entity "system_test_pio_9" -library "system_test" -name IP_TOOL_ENV "Qsys"

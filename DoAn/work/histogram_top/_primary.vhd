@@ -3,8 +3,8 @@ use verilog.vl_types.all;
 entity histogram_top is
     generic(
         GRAYSCALE       : integer := 256;
-        WIDTH           : integer := 345;
-        HEIGHT          : integer := 604;
+        WIDTH           : integer := 698;
+        HEIGHT          : integer := 463;
         TOTAL_PIXELS    : vl_notype
     );
     port(

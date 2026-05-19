@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>May 18, 2026 10:28:23 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1779074903058</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>May 19, 2026 12:08:46 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1779167326693</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\HDL\Doan_xulianh\DoAn\software\median_test_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>D:\HDL\Doan_xulianh\DoAn\system_test.sopcinfo</SopcDesignFile>
@@ -875,74 +875,98 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_9</slaveDescriptor>
-                <addressRange>0x010110A0 - 0x010110AF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>pio_5</slaveDescriptor>
-                <addressRange>0x010110B0 - 0x010110BF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>pio_8</slaveDescriptor>
-                <addressRange>0x010110C0 - 0x010110CF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>pio_7</slaveDescriptor>
-                <addressRange>0x010110D0 - 0x010110DF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>pio_6</slaveDescriptor>
+                <slaveDescriptor>pio_12</slaveDescriptor>
                 <addressRange>0x010110E0 - 0x010110EF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_4</slaveDescriptor>
+                <slaveDescriptor>pio_13</slaveDescriptor>
                 <addressRange>0x010110F0 - 0x010110FF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_3</slaveDescriptor>
+                <slaveDescriptor>pio_11</slaveDescriptor>
                 <addressRange>0x01011100 - 0x0101110F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_2</slaveDescriptor>
+                <slaveDescriptor>pio_10</slaveDescriptor>
                 <addressRange>0x01011110 - 0x0101111F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_1</slaveDescriptor>
+                <slaveDescriptor>pio_9</slaveDescriptor>
                 <addressRange>0x01011120 - 0x0101112F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_0</slaveDescriptor>
+                <slaveDescriptor>pio_5</slaveDescriptor>
                 <addressRange>0x01011130 - 0x0101113F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>altpll_0</slaveDescriptor>
+                <slaveDescriptor>pio_8</slaveDescriptor>
                 <addressRange>0x01011140 - 0x0101114F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>pio_7</slaveDescriptor>
+                <addressRange>0x01011150 - 0x0101115F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_6</slaveDescriptor>
+                <addressRange>0x01011160 - 0x0101116F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_4</slaveDescriptor>
+                <addressRange>0x01011170 - 0x0101117F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_3</slaveDescriptor>
+                <addressRange>0x01011180 - 0x0101118F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_2</slaveDescriptor>
+                <addressRange>0x01011190 - 0x0101119F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_1</slaveDescriptor>
+                <addressRange>0x010111A0 - 0x010111AF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_0</slaveDescriptor>
+                <addressRange>0x010111B0 - 0x010111BF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>altpll_0</slaveDescriptor>
+                <addressRange>0x010111C0 - 0x010111CF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x01011158 - 0x0101115F</addressRange>
+                <addressRange>0x010111D8 - 0x010111DF</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

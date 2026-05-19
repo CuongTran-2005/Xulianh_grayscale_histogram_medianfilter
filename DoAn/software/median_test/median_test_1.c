@@ -22,6 +22,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include "altera_avalon_jtag_uart_regs.h"
 
 // ============================================================
 // Địa chỉ từ BSP (khớp với Address Map trong Qsys)
@@ -44,6 +45,10 @@
 // ============================================================
 // Cấu hình ảnh test
 // ============================================================
+#define IMAGE_WIDTH  320
+#define IMAGE_HEIGHT 240
+#define IMAGE_SIZE   (IMAGE_WIDTH * IMAGE_HEIGHT)
+
 #define IMG_WIDTH   8     // Chiều rộng ảnh test
 #define IMG_HEIGHT  8     // Chiều cao ảnh test
 #define IMG_SIZE    (IMG_WIDTH * IMG_HEIGHT)
@@ -51,6 +56,7 @@
 // Offset trong SDRAM
 #define SDRAM_INPUT_OFFSET   0        // Ảnh đầu vào tại 0x00800000
 #define SDRAM_OUTPUT_OFFSET  (IMG_SIZE * 2) // Ảnh đầu ra (cách 2 byte/pixel vì SDRAM 16-bit)
+
 
 // ============================================================
 // Hàm ghi pixel vào SDRAM (16-bit access)
@@ -95,7 +101,6 @@ static inline uint8_t read_median_result(void)
     // (combinational logic, thường chỉ cần 1 cycle)
     volatile int i;
     for (i = 0; i < 10; i++);
-
     return (uint8_t)(IORD_ALTERA_AVALON_PIO_DATA(PIO_OUT_MEDIAN_BASE) & 0xFF);
 }
 
@@ -196,11 +201,11 @@ int main(void)
         printf("  FAIL: Loi ghi SDRAM!\n");
         return -1;
     }
-
+    /*
     uint16_t abc2;
     abc2 = sdram_read_pixel (65);
     printf("\nget test , abc2 =    %d", abc2);
-
+	*/
     print_image("ANH DAU VAO (tu SDRAM)", input_img, IMG_WIDTH, IMG_HEIGHT);
 
     // ----------------------------------------------------------
@@ -338,7 +343,7 @@ int main(void)
     printf("\n================================================\n");
     if (errors == 0 && write_ok && read_ok) {
         printf("  THANH CONG!\n");
-        printf("  - Ghi du lieu vao SDRAM: OK\n");
+        printf("  - Ghi du lieu vao anh xu li median vao SDRAM: OK\n");
         printf("  - Median HW chinh xac:   OK\n");
         printf("  - Ghi ket qua ra SDRAM:  OK\n");
         printf("  - Doc ket qua tu SDRAM:  OK\n");
@@ -372,8 +377,6 @@ int main(void)
         }
 
         printf("Đã nhận đủ %d bytes và ghi vào SDRAM thành công!\n", bytes_received);
-
-        // Tại đây, bạn có thể gọi hàm hiển thị ảnh từ SDRAM ra màn hình VGA/LCD
-
-        return 0;
+    return 0;
 }
+

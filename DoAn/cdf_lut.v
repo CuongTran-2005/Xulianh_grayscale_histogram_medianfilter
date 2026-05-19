@@ -1,7 +1,7 @@
 module cdf_lut #(
 	 parameter GRAYSCALE = 256,
-	 parameter WIDTH = 604,
-	 parameter HEIGHT = 345,
+	 parameter WIDTH = 698,
+	 parameter HEIGHT = 463,
 	 parameter TOTAL_PIXELS = WIDTH * HEIGHT
 )
 (
@@ -25,6 +25,7 @@ integer file_out;
 
 reg [31:0] cdf;
 reg write_done;
+reg [7:0] count;
 
 /*initial begin
     $readmemh(HIST_FILE, hist);   // đọc histogram từ file
@@ -37,19 +38,20 @@ always @(posedge clk or negedge rst_n) begin
         lut_done <= 0;
         cdf <= 0;
         write_done <= 0;
+		  count <= 0;
     end
-
     else if (cdf_lut_start && !lut_done) begin
-		  cdf = 0;
+		  //cdf = 0;
         // tính CDF + LUT
-        for (i = 0; i < 256; i = i + 1) 
-		  begin
-            cdf = cdf + hist_in[i * 32 +:32];
-            // scale về 0–255
-            lut_out[i * 8 +: 8] <= (cdf * 255) / TOTAL_PIXELS;
-        end
-        lut_done <= 1;
-		  $display("--- DONE: Da ghi cdf_lut xong ---");
+        //for (i = 0; i < 256; i = i + 1) 
+		  //begin
+			cdf = cdf + hist_in[count * 32 +:32];
+			// scale về 0–255
+			lut_out[count * 8 +: 8] = (cdf * 255) / TOTAL_PIXELS;
+			count = count + 1;
+        //end
+		  if (count == 256) lut_done = 1;
+		  //$display("--- DONE: Da ghi cdf_lut xong ---");
     end
 end
 
