@@ -1,4 +1,4 @@
-# FPGA Image Processing — Chapters 2 & 3
+# FPGA Image Processing
 
 > **Project:** Hardware Implementation of Image Processing Algorithms on FPGA  
 > **Board:** Altera/Intel FPGA DE2  
