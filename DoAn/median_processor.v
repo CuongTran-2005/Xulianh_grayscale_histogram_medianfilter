@@ -1,6 +1,6 @@
 module median_processor #(
-    parameter WIDTH  = 698,
-    parameter HEIGHT = 463,
+    parameter WIDTH  = 430,
+    parameter HEIGHT = 554,
     parameter TOTAL_PIXELS = WIDTH * HEIGHT,
     parameter IMAGE_NAME = "Anhinput.txt"
 )(

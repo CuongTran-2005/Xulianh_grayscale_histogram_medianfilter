@@ -1,5 +1,5 @@
 Flow report for Xulianh
-Tue May 19 12:07:53 2026
+Tue May 19 23:47:25 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,17 +40,17 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Tue May 19 12:07:53 2026           ;
+; Flow Status                        ; Successful - Tue May 19 23:47:25 2026           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Xulianh                                         ;
 ; Top-level Entity Name              ; test1                                           ;
 ; Family                             ; Cyclone II                                      ;
 ; Device                             ; EP2C35F672C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 3,788 / 33,216 ( 11 % )                         ;
-;     Total combinational functions  ; 3,547 / 33,216 ( 11 % )                         ;
-;     Dedicated logic registers      ; 1,830 / 33,216 ( 6 % )                          ;
-; Total registers                    ; 1898                                            ;
+; Total logic elements               ; 3,992 / 33,216 ( 12 % )                         ;
+;     Total combinational functions  ; 3,751 / 33,216 ( 11 % )                         ;
+;     Dedicated logic registers      ; 1,942 / 33,216 ( 6 % )                          ;
+; Total registers                    ; 2010                                            ;
 ; Total pins                         ; 40 / 475 ( 8 % )                                ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 273,408 / 483,840 ( 57 % )                      ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/19/2026 12:07:17 ;
+; Start date & time ; 05/19/2026 23:46:41 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Xulianh             ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------------------------------------+---------------+------------------------------------------+----------------+
 ; Assignment Name                     ; Value                                                         ; Default Value ; Entity Name                              ; Section Id     ;
 +-------------------------------------+---------------------------------------------------------------+---------------+------------------------------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 40350038314048.177916723713272                                ; --            ; --                                       ; --             ;
+; COMPILER_SIGNATURE_ID               ; 40350038314048.177920920111012                                ; --            ; --                                       ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                   ; --            ; --                                       ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim (Verilog)                                            ; <None>        ; --                                       ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                                          ; --            ; --                                       ; eda_simulation ;
@@ -186,7 +186,7 @@ applicable agreement for further details.
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                                         ; --            ; test1                                    ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; SOURCE                                                        ; --            ; test1                                    ; Top            ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                  ; --            ; --                                       ; --             ;
-; SLD_INFO                            ; QSYS_NAME system_test HAS_SOPCINFO 1 GENERATION_ID 1779165744 ; --            ; system_test                              ; --             ;
+; SLD_INFO                            ; QSYS_NAME system_test HAS_SOPCINFO 1 GENERATION_ID 1779208020 ; --            ; system_test                              ; --             ;
 ; SOPCINFO_FILE                       ; system_test/synthesis/../../system_test.sopcinfo              ; --            ; --                                       ; --             ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                            ; --            ; --                                       ; --             ;
 ; TOP_LEVEL_ENTITY                    ; test1                                                         ; Xulianh       ; --                                       ; --             ;
@@ -198,12 +198,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:15     ; 1.0                     ; 4907 MB             ; 00:00:15                           ;
-; Fitter                    ; 00:00:11     ; 1.0                     ; 4945 MB             ; 00:00:11                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 4601 MB             ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4615 MB             ; 00:00:02                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 4584 MB             ; 00:00:02                           ;
-; Total                     ; 00:00:32     ; --                      ; --                  ; 00:00:32                           ;
+; Analysis & Synthesis      ; 00:00:24     ; 1.0                     ; 6017 MB             ; 00:00:24                           ;
+; Fitter                    ; 00:00:10     ; 1.0                     ; 4957 MB             ; 00:00:10                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 4597 MB             ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4611 MB             ; 00:00:02                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 4592 MB             ; 00:00:02                           ;
+; Total                     ; 00:00:40     ; --                      ; --                  ; 00:00:40                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

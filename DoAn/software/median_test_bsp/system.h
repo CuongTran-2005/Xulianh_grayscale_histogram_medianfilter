@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'system_test'
  * SOPC Builder design path: D:/HDL/Doan_xulianh/DoAn/system_test.sopcinfo
  *
- * Generated: Tue May 19 12:08:44 ICT 2026
+ * Generated: Tue May 19 23:31:40 ICT 2026
  */
 
 /*
@@ -147,19 +147,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x10111d8
+#define ALT_STDERR_BASE 0x1011238
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x10111d8
+#define ALT_STDIN_BASE 0x1011238
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x10111d8
+#define ALT_STDOUT_BASE 0x1011238
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -172,7 +172,7 @@
  *
  */
 
-#define ALTPLL_0_BASE 0x10111c0
+#define ALTPLL_0_BASE 0x1011220
 #define ALTPLL_0_IRQ -1
 #define ALTPLL_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ALTPLL_0_NAME "/dev/altpll_0"
@@ -197,7 +197,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x10111d8
+#define JTAG_UART_0_BASE 0x1011238
 #define JTAG_UART_0_IRQ 0
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -283,7 +283,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_0 altera_avalon_pio
-#define PIO_0_BASE 0x10111b0
+#define PIO_0_BASE 0x1011210
 #define PIO_0_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_0_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_0_CAPTURE 0
@@ -310,7 +310,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_1 altera_avalon_pio
-#define PIO_1_BASE 0x10111a0
+#define PIO_1_BASE 0x1011200
 #define PIO_1_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_1_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_1_CAPTURE 0
@@ -337,7 +337,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_10 altera_avalon_pio
-#define PIO_10_BASE 0x1011110
+#define PIO_10_BASE 0x1011170
 #define PIO_10_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_10_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_10_CAPTURE 0
@@ -364,7 +364,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_11 altera_avalon_pio
-#define PIO_11_BASE 0x1011100
+#define PIO_11_BASE 0x1011160
 #define PIO_11_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_11_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_11_CAPTURE 0
@@ -391,7 +391,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_12 altera_avalon_pio
-#define PIO_12_BASE 0x10110e0
+#define PIO_12_BASE 0x1011140
 #define PIO_12_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_12_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_12_CAPTURE 0
@@ -418,7 +418,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_13 altera_avalon_pio
-#define PIO_13_BASE 0x10110f0
+#define PIO_13_BASE 0x1011150
 #define PIO_13_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_13_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_13_CAPTURE 0
@@ -440,12 +440,93 @@
 
 
 /*
+ * pio_14 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_14 altera_avalon_pio
+#define PIO_14_BASE 0x1011130
+#define PIO_14_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_14_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_14_CAPTURE 0
+#define PIO_14_DATA_WIDTH 1
+#define PIO_14_DO_TEST_BENCH_WIRING 0
+#define PIO_14_DRIVEN_SIM_VALUE 0
+#define PIO_14_EDGE_TYPE "NONE"
+#define PIO_14_FREQ 50000000
+#define PIO_14_HAS_IN 1
+#define PIO_14_HAS_OUT 0
+#define PIO_14_HAS_TRI 0
+#define PIO_14_IRQ -1
+#define PIO_14_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIO_14_IRQ_TYPE "NONE"
+#define PIO_14_NAME "/dev/pio_14"
+#define PIO_14_RESET_VALUE 0
+#define PIO_14_SPAN 16
+#define PIO_14_TYPE "altera_avalon_pio"
+
+
+/*
+ * pio_15 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_15 altera_avalon_pio
+#define PIO_15_BASE 0x1011120
+#define PIO_15_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_15_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_15_CAPTURE 0
+#define PIO_15_DATA_WIDTH 1
+#define PIO_15_DO_TEST_BENCH_WIRING 0
+#define PIO_15_DRIVEN_SIM_VALUE 0
+#define PIO_15_EDGE_TYPE "NONE"
+#define PIO_15_FREQ 50000000
+#define PIO_15_HAS_IN 1
+#define PIO_15_HAS_OUT 0
+#define PIO_15_HAS_TRI 0
+#define PIO_15_IRQ -1
+#define PIO_15_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIO_15_IRQ_TYPE "NONE"
+#define PIO_15_NAME "/dev/pio_15"
+#define PIO_15_RESET_VALUE 0
+#define PIO_15_SPAN 16
+#define PIO_15_TYPE "altera_avalon_pio"
+
+
+/*
+ * pio_16 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_16 altera_avalon_pio
+#define PIO_16_BASE 0x1011110
+#define PIO_16_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_16_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_16_CAPTURE 0
+#define PIO_16_DATA_WIDTH 1
+#define PIO_16_DO_TEST_BENCH_WIRING 0
+#define PIO_16_DRIVEN_SIM_VALUE 0
+#define PIO_16_EDGE_TYPE "NONE"
+#define PIO_16_FREQ 50000000
+#define PIO_16_HAS_IN 1
+#define PIO_16_HAS_OUT 0
+#define PIO_16_HAS_TRI 0
+#define PIO_16_IRQ -1
+#define PIO_16_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIO_16_IRQ_TYPE "NONE"
+#define PIO_16_NAME "/dev/pio_16"
+#define PIO_16_RESET_VALUE 0
+#define PIO_16_SPAN 16
+#define PIO_16_TYPE "altera_avalon_pio"
+
+
+/*
  * pio_2 configuration
  *
  */
 
 #define ALT_MODULE_CLASS_pio_2 altera_avalon_pio
-#define PIO_2_BASE 0x1011190
+#define PIO_2_BASE 0x10111f0
 #define PIO_2_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_2_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_2_CAPTURE 0
@@ -472,7 +553,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_3 altera_avalon_pio
-#define PIO_3_BASE 0x1011180
+#define PIO_3_BASE 0x10111e0
 #define PIO_3_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_3_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_3_CAPTURE 0
@@ -499,7 +580,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_4 altera_avalon_pio
-#define PIO_4_BASE 0x1011170
+#define PIO_4_BASE 0x10111d0
 #define PIO_4_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_4_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_4_CAPTURE 0
@@ -526,7 +607,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_5 altera_avalon_pio
-#define PIO_5_BASE 0x1011130
+#define PIO_5_BASE 0x1011190
 #define PIO_5_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_5_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_5_CAPTURE 0
@@ -553,7 +634,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_6 altera_avalon_pio
-#define PIO_6_BASE 0x1011160
+#define PIO_6_BASE 0x10111c0
 #define PIO_6_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_6_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_6_CAPTURE 0
@@ -580,7 +661,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_7 altera_avalon_pio
-#define PIO_7_BASE 0x1011150
+#define PIO_7_BASE 0x10111b0
 #define PIO_7_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_7_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_7_CAPTURE 0
@@ -607,7 +688,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_8 altera_avalon_pio
-#define PIO_8_BASE 0x1011140
+#define PIO_8_BASE 0x10111a0
 #define PIO_8_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_8_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_8_CAPTURE 0
@@ -634,7 +715,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_9 altera_avalon_pio
-#define PIO_9_BASE 0x1011120
+#define PIO_9_BASE 0x1011180
 #define PIO_9_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_9_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_9_CAPTURE 0

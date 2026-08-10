@@ -59,6 +59,27 @@ applicable agreement for further details.
 		(line (pt 0 96)(pt 16 96)(line_width 3))
 	)
 	(port
+		(pt 0 112)
+		(input)
+		(text "clk_in_check_export" (rect 0 0 82 12)(font "Arial" ))
+		(text "clk_in_check_export" (rect 21 107 103 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 1))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "in_done1_export" (rect 0 0 64 12)(font "Arial" ))
+		(text "in_done1_export" (rect 21 123 85 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 1))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "in_done2_export" (rect 0 0 66 12)(font "Arial" ))
+		(text "in_done2_export" (rect 21 139 87 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
+	)
+	(port
 		(pt 304 32)
 		(output)
 		(text "sdram_clk_clk" (rect 0 0 59 12)(font "Arial" ))

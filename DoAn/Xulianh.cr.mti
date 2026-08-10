@@ -12,14 +12,14 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	median
 
-} {} {}} D:/HDL/Doan_xulianh/DoAn/equalize.v {1 {vlog -work work {D:\HDL\Doan_xulianh\DoAn\equalize.v}
+} {} {}} D:/HDL/Doan_xulianh/DoAn/equalize.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/equalize.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module equalize
 
 Top level modules:
 	equalize
 
-} {} {}} D:/HDL/Doan_xulianh/DoAn/cdf_lut.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/cdf_lut.v
+} {} {}} D:/HDL/Doan_xulianh/DoAn/cdf_lut.v {1 {vlog -work work {D:\HDL\Doan_xulianh\DoAn\cdf_lut.v}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module cdf_lut
 
@@ -54,7 +54,7 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	tb_equalize
 
-} {} {}} D:/HDL/Doan_xulianh/DoAn/histogram.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/histogram.v
+} {} {}} D:/HDL/Doan_xulianh/DoAn/histogram.v {1 {vlog -work work {D:\HDL\Doan_xulianh\DoAn\histogram.v}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module histogram
 
@@ -68,7 +68,7 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	tb_Xulianh
 
-} {} {}} D:/HDL/Doan_xulianh/DoAn/histogram_top.v {1 {vlog -work work D:/HDL/Doan_xulianh/DoAn/histogram_top.v
+} {} {}} D:/HDL/Doan_xulianh/DoAn/histogram_top.v {1 {vlog -work work {D:\HDL\Doan_xulianh\DoAn\histogram_top.v}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module histogram_top
 

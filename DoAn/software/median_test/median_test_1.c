@@ -17,6 +17,7 @@
  */
 
 #include "system.h"
+#include "io.h"
 #include "altera_avalon_pio_regs.h"
 #include <stdio.h>
 #include <stdint.h>
@@ -41,21 +42,32 @@
 #define PIO_P7_BASE    PIO_7_BASE
 #define PIO_P8_BASE    PIO_8_BASE
 #define PIO_OUT_MEDIAN_BASE  PIO_9_BASE
+#define PIO_DONE_HIST_BASE      PIO_10_BASE   /* INPUT: histogram done */
+#define PIO_START_HIST_BASE     PIO_11_BASE   /* OUTPUT: start histogram */
+#define PIO_OUT_PIXEL_HIST_BASE PIO_12_BASE   /* OUTPUT: pixel -> histogram/equalize */
+#define PIO_IN_PIXEL_HIST_BASE  PIO_13_BASE   /* INPUT: pixel <- equalize output */
+#define PIO_CLK_CHECK_BASE   PIO_14_BASE //clk de gui data theo dung chu ki
+#define PIO_DONE1   PIO_15_BASE
+#define PIO_DONE2   PIO_16_BASE
 
 // ============================================================
 // Cấu hình ảnh test
 // ============================================================
-#define IMAGE_WIDTH  320
-#define IMAGE_HEIGHT 240
-#define IMAGE_SIZE   (IMAGE_WIDTH * IMAGE_HEIGHT)
+#define IMG_WIDTH  320
+#define IMG_HEIGHT 240
+#define IMAGE_SIZE   (IMG_WIDTH * IMG_HEIGHT)
+#define TOTAL_PIXELS (IMG_WIDTH * IMG_HEIGHT)
 
-#define IMG_WIDTH   8     // Chiều rộng ảnh test
-#define IMG_HEIGHT  8     // Chiều cao ảnh test
+
 #define IMG_SIZE    (IMG_WIDTH * IMG_HEIGHT)
 
 // Offset trong SDRAM
 #define SDRAM_INPUT_OFFSET   0        // Ảnh đầu vào tại 0x00800000
-#define SDRAM_OUTPUT_OFFSET  (IMG_SIZE * 2) // Ảnh đầu ra (cách 2 byte/pixel vì SDRAM 16-bit)
+#define SDRAM_OUTPUT_OFFSET  (IMG_SIZE * 2) // Ảnh đầu ra median (cách 2 byte/pixel vì SDRAM 16-bit)
+#define SDRAM_HIST_OFFSET (IMAGE_SIZE * 4)
+
+
+
 
 
 // ============================================================
@@ -103,27 +115,38 @@ static inline uint8_t read_median_result(void)
     for (i = 0; i < 10; i++);
     return (uint8_t)(IORD_ALTERA_AVALON_PIO_DATA(PIO_OUT_MEDIAN_BASE) & 0xFF);
 }
-
 // ============================================================
-// Hàm tính median bằng phần mềm (để verify hardware)
+// Hàm tính đọc dữ file hex ảnh từ PC vào SDRAM
 // ============================================================
-static uint8_t software_median(uint8_t p[9])
+static inline void PicPCtoSDRAM (void)
 {
-    uint8_t sorted[9];
-    memcpy(sorted, p, 9);
+	unsigned char *sdram_buffer = (unsigned char *) SDRAM_BASE;
+	unsigned long bytes_received = 0;
+	unsigned int uart_data_reg;
+	printf("--- HE THONG DA SAN SANG ---\n");
+	printf("Dang cho du lieu anh (%d bytes) tu PC...\n", TOTAL_PIXELS); // Đã sửa: Thêm dấu đóng ngoặc )
 
-    // Bubble sort đơn giản
-    int i, j;
-    for (i = 0; i < 9; i++) {
-        for (j = i + 1; j < 9; j++) {
-            if (sorted[i] > sorted[j]) {
-                uint8_t tmp = sorted[i];
-                sorted[i] = sorted[j];
-                sorted[j] = tmp;
-            }
-        }
-    }
-    return sorted[4]; // Median là phần tử thứ 5
+	// Vòng lặp nhận dữ liệu cho đến khi đủ số lượng pixel của ảnh
+	while (bytes_received < TOTAL_PIXELS) {
+		// Đọc trực tiếp thanh ghi DATA của JTAG UART theo đúng tên JTAG_UART_0_BASE trong system.h
+		uart_data_reg = IORD_ALTERA_AVALON_JTAG_UART_DATA(JTAG_UART_0_BASE);
+		// Kiểm tra xem bit RVALID (bit 15) có bằng 1 hay không (có dữ liệu mới)
+		if (uart_data_reg & ALTERA_AVALON_JTAG_UART_DATA_RVALID_MSK) {
+
+			// Lấy 8 bit dữ liệu thấp (pixel ảnh) và ghi thẳng vào vị trí hiện tại trong SDRAM
+			//*(sdram_buffer + bytes_received) = (unsigned char)(uart_data_reg & ALTERA_AVALON_JTAG_UART_DATA_DATA_MSK);
+			sdram_write_pixel(uart_data_reg,sdram_buffer + bytes_received);
+			// Tăng biến đếm vị trí ô nhớ
+			bytes_received++;
+
+			// Hiển thị tiến độ mỗi khi nhận được 10,000 bytes
+			if (bytes_received % 10000 == 0) {
+				printf("Tien do: %lu / %d bytes\n", bytes_received, TOTAL_PIXELS); // Đã sửa thành TOTAL_PIXELS
+			}
+		}
+	}
+
+	printf("\n---> THANH CONG: Da nap tron ven anh vao SDRAM!\n");
 }
 
 // ============================================================
@@ -146,15 +169,6 @@ static void print_image(const char *title, uint8_t *img, int w, int h)
 // ============================================================
 int main(void)
 {
-	/*printf("\ntest");
-	uint16_t abc, abc2;
-	sdram_write_pixel(0, 100);
-	sdram_write_pixel(1, 200);
-	abc = sdram_read_pixel (0);
-	abc2 = sdram_read_pixel (1);
-	uint16_t *xyz =(uint16_t)(SDRAM_BASE + 2);
-	uint16_t gxyz = &xyz;
-	printf("\nget test , abc = %d,  %d,    %d", abc,abc2,gxyz); */
     printf("\n");
     printf("================================================\n");
     printf("  Median Filter Test - Nios II + Hardware\n");
@@ -165,6 +179,10 @@ int main(void)
     // ----------------------------------------------------------
     printf("[1] Tao anh test va ghi vao SDRAM...\n");
 
+
+    PicPCtoSDRAM();
+    int i;
+    /*
     // Ảnh test 8x8 với noise (giá trị ngẫu nhiên + 1 điểm nhiễu)
     uint8_t input_img[IMG_SIZE] = {
         10,  20,  30,  40,  50,  60,  70,  80,
@@ -201,13 +219,11 @@ int main(void)
         printf("  FAIL: Loi ghi SDRAM!\n");
         return -1;
     }
-    /*
     uint16_t abc2;
     abc2 = sdram_read_pixel (65);
     printf("\nget test , abc2 =    %d", abc2);
 	*/
-    print_image("ANH DAU VAO (tu SDRAM)", input_img, IMG_WIDTH, IMG_HEIGHT);
-
+    //print_image("ANH DAU VAO (tu SDRAM)", input_img, IMG_WIDTH, IMG_HEIGHT);
     // ----------------------------------------------------------
     // BƯỚC 2: Áp dụng median filter qua hardware
     //         Xử lý từng cửa sổ 3x3, bỏ qua border (1 pixel)
@@ -231,7 +247,7 @@ int main(void)
             {
                 // Border: copy nguyên giá trị gốc
                 result = sdram_read_pixel(SDRAM_INPUT_OFFSET + row * IMG_WIDTH + col);
-                printf("\n result = %h", result);
+                printf("\n result = %02X", result);
             }
             else
             {
@@ -248,6 +264,7 @@ int main(void)
                 window[6] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row+1)*IMG_WIDTH + (col-1));
                 window[7] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row+1)*IMG_WIDTH + (col  ));
                 window[8] = sdram_read_pixel(SDRAM_INPUT_OFFSET + (row+1)*IMG_WIDTH + (col+1));
+
                 printf("\n idex = %d,     %d",(SDRAM_INPUT_OFFSET + (row-1)*IMG_WIDTH + (col-1)),window[0]);
 
                 // Ghi cửa sổ vào PIO → Hardware median tính toán
@@ -269,12 +286,13 @@ int main(void)
                 }*/
 
                 result = hw_result;
+                sdram_write_pixel(SDRAM_OUTPUT_OFFSET + total_processed,result);
                 total_processed++;
                 //printf("\n result = %h,  total_processed = %d", result, total_processed);
             }
 
             output_img[row * IMG_WIDTH + col] = result;
-            printf("\n output = %h,  total_processed =", output_img[row * IMG_WIDTH + col]);
+            printf("\n output = %02X", output_img[row * IMG_WIDTH + col]);
 
         }
     }
@@ -291,12 +309,13 @@ int main(void)
     // ----------------------------------------------------------
     // BƯỚC 3: Ghi kết quả output vào SDRAM
     // ----------------------------------------------------------
+    /*
     printf("\n[3] Ghi ket qua vao SDRAM...\n");
 
     for (i = 0; i < IMG_SIZE; i++) {
         sdram_write_pixel(SDRAM_OUTPUT_OFFSET + i, output_img[i]);
     }
-
+	*/
     // Verify output
     int read_ok = 1;
     for (i = 0; i < IMG_SIZE; i++) {
@@ -321,6 +340,7 @@ int main(void)
     // ----------------------------------------------------------
     // BƯỚC 4: So sánh chi tiết
     // ----------------------------------------------------------
+    /*
     printf("\n[4] So sanh truoc/sau filter:\n");
     printf("Row Col |  Input | Output | Changed\n");
     printf("--------|--------|--------|--------\n");
@@ -336,12 +356,12 @@ int main(void)
             }
         }
     }
-
+	*/
     // ----------------------------------------------------------
     // BƯỚC 5: Kết quả cuối
     // ----------------------------------------------------------
     printf("\n================================================\n");
-    if (errors == 0 && write_ok && read_ok) {
+    if (errors == 0 && read_ok) {
         printf("  THANH CONG!\n");
         printf("  - Ghi du lieu vao anh xu li median vao SDRAM: OK\n");
         printf("  - Median HW chinh xac:   OK\n");
@@ -352,31 +372,43 @@ int main(void)
     }
     printf("================================================\n");
 
-    volatile unsigned char *sdram_ptr = (volatile unsigned char *) SDRAM_BASE;
-        int bytes_received = 0;
-        unsigned int jtag_data;
-
-        printf("Đang chờ nhận dữ liệu ảnh từ PC...\n");
-
-        while (bytes_received < IMAGE_SIZE) {
-            // Đọc thanh ghi DATA của JTAG UART
-            jtag_data = IORD_ALTERA_AVALON_JTAG_UART_DATA(JTAG_UART_0_BASE);
-
-            // Kiểm tra bit thứ 15 (RVALID). Nếu bit này = 1 nghĩa là có dữ liệu mới.
-            if (jtag_data & 0x8000) {
-                // Tách lấy 8 bit dữ liệu (byte)
-                unsigned char byte_data = jtag_data & 0xFF;
-
-                // Ghi byte dữ liệu vào SDRAM
-                *sdram_ptr = byte_data;
-
-                // Tăng con trỏ SDRAM và bộ đếm
-                sdram_ptr++;
-                bytes_received++;
-            }
-        }
-
-        printf("Đã nhận đủ %d bytes và ghi vào SDRAM thành công!\n", bytes_received);
-    return 0;
+    //Bat dau thuat toan hist
+    uint8_t cary = 0;
+    uint8_t histstart=0;
+    uint16_t count =0;
+    uint8_t data,datain;
+    while(!IORD_ALTERA_AVALON_PIO_DATA(PIO_DONE_HIST_BASE)){
+    	//hist togram
+		while (!IORD_ALTERA_AVALON_PIO_DATA(PIO_DONE1)){
+			if (IORD_ALTERA_AVALON_PIO_DATA(PIO_CLK_CHECK_BASE)){
+				cary = 0;
+			} else
+			if ( !IORD_ALTERA_AVALON_PIO_DATA(PIO_CLK_CHECK_BASE) && !cary){
+				cary = 1;
+				if (!histstart){
+					IOWR_ALTERA_AVALON_PIO_DATA(PIO_START_HIST_BASE, 1);
+					histstart = 1;
+				} else IOWR_ALTERA_AVALON_PIO_DATA(PIO_START_HIST_BASE, 1);
+				data = sdram_read_pixel(SDRAM_OUTPUT_OFFSET + count);
+				IOWR_ALTERA_AVALON_PIO_DATA(PIO_OUT_PIXEL_HIST_BASE,data);
+				count ++;
+			}
+		}
+		cary=0;
+		while(IORD_ALTERA_AVALON_PIO_DATA(PIO_DONE2)){
+			if (IORD_ALTERA_AVALON_PIO_DATA(PIO_CLK_CHECK_BASE)){
+				cary = 0;
+			} else
+			if ( !IORD_ALTERA_AVALON_PIO_DATA(PIO_CLK_CHECK_BASE) && !cary){
+				cary = 1;
+				data = sdram_read_pixel(SDRAM_OUTPUT_OFFSET + count);
+				IOWR_ALTERA_AVALON_PIO_DATA(PIO_OUT_PIXEL_HIST_BASE,data);
+				datain = IORD_ALTERA_AVALON_PIO_DATA(PIO_IN_PIXEL_HIST_BASE);
+				sdram_write_pixel(SDRAM_HIST_OFFET + count, datain);
+				count ++;
+			}
+		}
+    }
+    //IORD_ALTERA_AVALON_PIO_DATA(PIO_CLK_CHECK_BASE);
 }
 

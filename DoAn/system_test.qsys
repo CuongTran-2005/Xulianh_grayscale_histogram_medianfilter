@@ -32,7 +32,7 @@
    {
       datum baseAddress
       {
-         value = "16847320";
+         value = "16847416";
          type = "String";
       }
    }
@@ -124,6 +124,30 @@
          type = "int";
       }
    }
+   element pio_14
+   {
+      datum _sortIndex
+      {
+         value = "20";
+         type = "int";
+      }
+   }
+   element pio_15
+   {
+      datum _sortIndex
+      {
+         value = "21";
+         type = "int";
+      }
+   }
+   element pio_16
+   {
+      datum _sortIndex
+      {
+         value = "22";
+         type = "int";
+      }
+   }
    element pio_2
    {
       datum _sortIndex
@@ -192,87 +216,7 @@
    {
       datum baseAddress
       {
-         value = "16847296";
-         type = "String";
-      }
-   }
-   element pio_0.s1
-   {
-      datum baseAddress
-      {
-         value = "16847280";
-         type = "String";
-      }
-   }
-   element pio_6.s1
-   {
-      datum baseAddress
-      {
-         value = "16847200";
-         type = "String";
-      }
-   }
-   element pio_7.s1
-   {
-      datum baseAddress
-      {
-         value = "16847184";
-         type = "String";
-      }
-   }
-   element onchip_memory2_0.s1
-   {
-      datum baseAddress
-      {
-         value = "16809984";
-         type = "String";
-      }
-   }
-   element pio_11.s1
-   {
-      datum baseAddress
-      {
-         value = "16847104";
-         type = "String";
-      }
-   }
-   element pio_4.s1
-   {
-      datum baseAddress
-      {
-         value = "16847216";
-         type = "String";
-      }
-   }
-   element pio_2.s1
-   {
-      datum baseAddress
-      {
-         value = "16847248";
-         type = "String";
-      }
-   }
-   element pio_10.s1
-   {
-      datum baseAddress
-      {
-         value = "16847120";
-         type = "String";
-      }
-   }
-   element pio_5.s1
-   {
-      datum baseAddress
-      {
-         value = "16847152";
-         type = "String";
-      }
-   }
-   element pio_13.s1
-   {
-      datum baseAddress
-      {
-         value = "16847088";
+         value = "16847392";
          type = "String";
       }
    }
@@ -280,31 +224,39 @@
    {
       datum baseAddress
       {
-         value = "16847264";
+         value = "16847360";
          type = "String";
       }
    }
-   element pio_3.s1
+   element pio_16.s1
    {
       datum baseAddress
       {
-         value = "16847232";
+         value = "16847120";
          type = "String";
       }
    }
-   element pio_8.s1
+   element pio_7.s1
    {
       datum baseAddress
       {
-         value = "16847168";
+         value = "16847280";
          type = "String";
       }
    }
-   element pio_12.s1
+   element pio_10.s1
    {
       datum baseAddress
       {
-         value = "16847072";
+         value = "16847216";
+         type = "String";
+      }
+   }
+   element pio_5.s1
+   {
+      datum baseAddress
+      {
+         value = "16847248";
          type = "String";
       }
    }
@@ -321,11 +273,107 @@
          type = "String";
       }
    }
-   element pio_9.s1
+   element pio_3.s1
+   {
+      datum baseAddress
+      {
+         value = "16847328";
+         type = "String";
+      }
+   }
+   element pio_4.s1
+   {
+      datum baseAddress
+      {
+         value = "16847312";
+         type = "String";
+      }
+   }
+   element pio_15.s1
    {
       datum baseAddress
       {
          value = "16847136";
+         type = "String";
+      }
+   }
+   element pio_6.s1
+   {
+      datum baseAddress
+      {
+         value = "16847296";
+         type = "String";
+      }
+   }
+   element onchip_memory2_0.s1
+   {
+      datum baseAddress
+      {
+         value = "16809984";
+         type = "String";
+      }
+   }
+   element pio_2.s1
+   {
+      datum baseAddress
+      {
+         value = "16847344";
+         type = "String";
+      }
+   }
+   element pio_8.s1
+   {
+      datum baseAddress
+      {
+         value = "16847264";
+         type = "String";
+      }
+   }
+   element pio_13.s1
+   {
+      datum baseAddress
+      {
+         value = "16847184";
+         type = "String";
+      }
+   }
+   element pio_12.s1
+   {
+      datum baseAddress
+      {
+         value = "16847168";
+         type = "String";
+      }
+   }
+   element pio_0.s1
+   {
+      datum baseAddress
+      {
+         value = "16847376";
+         type = "String";
+      }
+   }
+   element pio_14.s1
+   {
+      datum baseAddress
+      {
+         value = "16847152";
+         type = "String";
+      }
+   }
+   element pio_11.s1
+   {
+      datum baseAddress
+      {
+         value = "16847200";
+         type = "String";
+      }
+   }
+   element pio_9.s1
+   {
+      datum baseAddress
+      {
+         value = "16847232";
          type = "String";
       }
    }
@@ -344,7 +392,7 @@
  <parameter name="projectName" value="Xulianh.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1779161990133" />
+ <parameter name="timeStamp" value="1779207948411" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="Clock.clk_in" type="clock" dir="end" />
@@ -423,6 +471,21 @@
  <interface
    name="in_pixel_hist"
    internal="pio_13.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="clk_in_check"
+   internal="pio_14.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="in_done1"
+   internal="pio_15.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="in_done2"
+   internal="pio_16.external_connection"
    type="conduit"
    dir="end" />
  <module kind="clock_source" version="13.0" enabled="1" name="Clock">
@@ -536,8 +599,8 @@
   <parameter name="tightlyCoupledInstructionMaster1AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster2AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster3AddrWidth" value="1" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x800000' end='0x1000000' /><slave name='onchip_memory2_0.s1' start='0x1008000' end='0x1010000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1010800' end='0x1011000' /><slave name='pio_12.s1' start='0x10110E0' end='0x10110F0' /><slave name='pio_13.s1' start='0x10110F0' end='0x1011100' /><slave name='pio_11.s1' start='0x1011100' end='0x1011110' /><slave name='pio_10.s1' start='0x1011110' end='0x1011120' /><slave name='pio_9.s1' start='0x1011120' end='0x1011130' /><slave name='pio_5.s1' start='0x1011130' end='0x1011140' /><slave name='pio_8.s1' start='0x1011140' end='0x1011150' /><slave name='pio_7.s1' start='0x1011150' end='0x1011160' /><slave name='pio_6.s1' start='0x1011160' end='0x1011170' /><slave name='pio_4.s1' start='0x1011170' end='0x1011180' /><slave name='pio_3.s1' start='0x1011180' end='0x1011190' /><slave name='pio_2.s1' start='0x1011190' end='0x10111A0' /><slave name='pio_1.s1' start='0x10111A0' end='0x10111B0' /><slave name='pio_0.s1' start='0x10111B0' end='0x10111C0' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10111D8' end='0x10111E0' /></address-map>]]></parameter>
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x800000' end='0x1000000' /><slave name='onchip_memory2_0.s1' start='0x1008000' end='0x1010000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1010800' end='0x1011000' /><slave name='pio_12.s1' start='0x10110E0' end='0x10110F0' /><slave name='pio_13.s1' start='0x10110F0' end='0x1011100' /><slave name='pio_11.s1' start='0x1011100' end='0x1011110' /><slave name='pio_10.s1' start='0x1011110' end='0x1011120' /><slave name='pio_9.s1' start='0x1011120' end='0x1011130' /><slave name='pio_5.s1' start='0x1011130' end='0x1011140' /><slave name='pio_8.s1' start='0x1011140' end='0x1011150' /><slave name='pio_7.s1' start='0x1011150' end='0x1011160' /><slave name='pio_6.s1' start='0x1011160' end='0x1011170' /><slave name='pio_4.s1' start='0x1011170' end='0x1011180' /><slave name='pio_3.s1' start='0x1011180' end='0x1011190' /><slave name='pio_2.s1' start='0x1011190' end='0x10111A0' /><slave name='pio_1.s1' start='0x10111A0' end='0x10111B0' /><slave name='pio_0.s1' start='0x10111B0' end='0x10111C0' /><slave name='altpll_0.pll_slave' start='0x10111C0' end='0x10111D0' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10111D8' end='0x10111E0' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x800000' end='0x1000000' /><slave name='onchip_memory2_0.s1' start='0x1008000' end='0x1010000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1010800' end='0x1011000' /><slave name='pio_16.s1' start='0x1011110' end='0x1011120' /><slave name='pio_15.s1' start='0x1011120' end='0x1011130' /><slave name='pio_14.s1' start='0x1011130' end='0x1011140' /><slave name='pio_12.s1' start='0x1011140' end='0x1011150' /><slave name='pio_13.s1' start='0x1011150' end='0x1011160' /><slave name='pio_11.s1' start='0x1011160' end='0x1011170' /><slave name='pio_10.s1' start='0x1011170' end='0x1011180' /><slave name='pio_9.s1' start='0x1011180' end='0x1011190' /><slave name='pio_5.s1' start='0x1011190' end='0x10111A0' /><slave name='pio_8.s1' start='0x10111A0' end='0x10111B0' /><slave name='pio_7.s1' start='0x10111B0' end='0x10111C0' /><slave name='pio_6.s1' start='0x10111C0' end='0x10111D0' /><slave name='pio_4.s1' start='0x10111D0' end='0x10111E0' /><slave name='pio_3.s1' start='0x10111E0' end='0x10111F0' /><slave name='pio_2.s1' start='0x10111F0' end='0x1011200' /><slave name='pio_1.s1' start='0x1011200' end='0x1011210' /><slave name='pio_0.s1' start='0x1011210' end='0x1011220' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x1011238' end='0x1011240' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x800000' end='0x1000000' /><slave name='onchip_memory2_0.s1' start='0x1008000' end='0x1010000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1010800' end='0x1011000' /><slave name='pio_16.s1' start='0x1011110' end='0x1011120' /><slave name='pio_15.s1' start='0x1011120' end='0x1011130' /><slave name='pio_14.s1' start='0x1011130' end='0x1011140' /><slave name='pio_12.s1' start='0x1011140' end='0x1011150' /><slave name='pio_13.s1' start='0x1011150' end='0x1011160' /><slave name='pio_11.s1' start='0x1011160' end='0x1011170' /><slave name='pio_10.s1' start='0x1011170' end='0x1011180' /><slave name='pio_9.s1' start='0x1011180' end='0x1011190' /><slave name='pio_5.s1' start='0x1011190' end='0x10111A0' /><slave name='pio_8.s1' start='0x10111A0' end='0x10111B0' /><slave name='pio_7.s1' start='0x10111B0' end='0x10111C0' /><slave name='pio_6.s1' start='0x10111C0' end='0x10111D0' /><slave name='pio_4.s1' start='0x10111D0' end='0x10111E0' /><slave name='pio_3.s1' start='0x10111E0' end='0x10111F0' /><slave name='pio_2.s1' start='0x10111F0' end='0x1011200' /><slave name='pio_1.s1' start='0x1011200' end='0x1011210' /><slave name='pio_0.s1' start='0x1011210' end='0x1011220' /><slave name='altpll_0.pll_slave' start='0x1011220' end='0x1011230' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x1011238' end='0x1011240' /></address-map>]]></parameter>
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="deviceFamilyName" value="Cyclone II" />
   <parameter name="internalIrqMaskSystemInfo" value="1" />
@@ -1044,6 +1107,60 @@
   <parameter name="width" value="8" />
   <parameter name="clockRate" value="50000000" />
  </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="pio_14">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="pio_15">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="pio_16">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
  <connection
    kind="avalon"
    version="13.0"
@@ -1089,7 +1206,7 @@
    start="nios2_qsys_0.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010111d8" />
+  <parameter name="baseAddress" value="0x01011238" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1163,7 +1280,7 @@
    start="nios2_qsys_0.data_master"
    end="altpll_0.pll_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010111c0" />
+  <parameter name="baseAddress" value="0x01011220" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="clock" version="13.0" start="altpll_0.c0" end="pio_0.clk" />
@@ -1174,7 +1291,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010111b0" />
+  <parameter name="baseAddress" value="0x01011210" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1183,7 +1300,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010111a0" />
+  <parameter name="baseAddress" value="0x01011200" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="clock" version="13.0" start="altpll_0.c0" end="pio_1.clk" />
@@ -1194,7 +1311,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011190" />
+  <parameter name="baseAddress" value="0x010111f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1203,7 +1320,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_3.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011180" />
+  <parameter name="baseAddress" value="0x010111e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1212,7 +1329,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_4.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011170" />
+  <parameter name="baseAddress" value="0x010111d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1221,7 +1338,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_6.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011160" />
+  <parameter name="baseAddress" value="0x010111c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1230,7 +1347,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_7.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011150" />
+  <parameter name="baseAddress" value="0x010111b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1239,7 +1356,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_8.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011140" />
+  <parameter name="baseAddress" value="0x010111a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="reset" version="13.0" start="Clock.clk_reset" end="pio_2.reset" />
@@ -1262,7 +1379,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_5.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011130" />
+  <parameter name="baseAddress" value="0x01011190" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="reset" version="13.0" start="Clock.clk_reset" end="pio_9.reset" />
@@ -1273,7 +1390,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_9.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011120" />
+  <parameter name="baseAddress" value="0x01011180" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1291,7 +1408,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_9.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011120" />
+  <parameter name="baseAddress" value="0x01011180" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1300,7 +1417,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_8.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011140" />
+  <parameter name="baseAddress" value="0x010111a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1309,7 +1426,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_7.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011150" />
+  <parameter name="baseAddress" value="0x010111b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1318,7 +1435,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_6.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011160" />
+  <parameter name="baseAddress" value="0x010111c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1327,7 +1444,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_4.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011170" />
+  <parameter name="baseAddress" value="0x010111d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1336,7 +1453,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_5.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011130" />
+  <parameter name="baseAddress" value="0x01011190" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1345,7 +1462,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011190" />
+  <parameter name="baseAddress" value="0x010111f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1354,7 +1471,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_3.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011180" />
+  <parameter name="baseAddress" value="0x010111e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1363,7 +1480,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010111a0" />
+  <parameter name="baseAddress" value="0x01011200" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1372,7 +1489,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010111b0" />
+  <parameter name="baseAddress" value="0x01011210" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1381,7 +1498,7 @@
    start="nios2_qsys_0.instruction_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010111d8" />
+  <parameter name="baseAddress" value="0x01011238" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1404,7 +1521,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_10.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011110" />
+  <parameter name="baseAddress" value="0x01011170" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1413,7 +1530,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_10.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011110" />
+  <parameter name="baseAddress" value="0x01011170" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="clock" version="13.0" start="altpll_0.c0" end="pio_10.clk" />
@@ -1428,7 +1545,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_11.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011100" />
+  <parameter name="baseAddress" value="0x01011160" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1437,7 +1554,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_11.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01011100" />
+  <parameter name="baseAddress" value="0x01011160" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="clock" version="13.0" start="altpll_0.c0" end="pio_11.clk" />
@@ -1457,7 +1574,7 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_13.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010110f0" />
+  <parameter name="baseAddress" value="0x01011150" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1466,7 +1583,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_13.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010110f0" />
+  <parameter name="baseAddress" value="0x01011150" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1475,7 +1592,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_12.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010110e0" />
+  <parameter name="baseAddress" value="0x01011140" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1484,11 +1601,83 @@
    start="nios2_qsys_0.instruction_master"
    end="pio_12.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010110e0" />
+  <parameter name="baseAddress" value="0x01011140" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="clock" version="13.0" start="altpll_0.c0" end="pio_13.clk" />
  <connection kind="clock" version="13.0" start="altpll_0.c0" end="pio_12.clk" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="Clock.clk_reset"
+   end="pio_14.reset" />
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="pio_14.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x01011130" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.instruction_master"
+   end="pio_14.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x01011130" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="clock" version="13.0" start="altpll_0.c0" end="pio_14.clk" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="Clock.clk_reset"
+   end="pio_15.reset" />
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.instruction_master"
+   end="pio_15.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x01011120" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="pio_15.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x01011120" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="reset"
+   version="13.0"
+   start="Clock.clk_reset"
+   end="pio_16.reset" />
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.instruction_master"
+   end="pio_16.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x01011110" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="13.0"
+   start="nios2_qsys_0.data_master"
+   end="pio_16.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x01011110" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="clock" version="13.0" start="altpll_0.c0" end="pio_15.clk" />
+ <connection kind="clock" version="13.0" start="altpll_0.c0" end="pio_16.clk" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>
